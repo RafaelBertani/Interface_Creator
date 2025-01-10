@@ -30,7 +30,7 @@ public class Right_panel extends JFrame implements ActionListener{
     private JButton add_scrollpane = new JButton();
     private JButton add_button = new JButton();
     private JButton add_combobox = new JButton();
-    private JButton add_radiobuttons = new JButton();
+    private JButton add_radiobutton = new JButton();
     private JButton add_table = new JButton();
     private JButton add_image = new JButton();
     //private JButton add_drag_drop = new JButton();
@@ -143,9 +143,9 @@ public class Right_panel extends JFrame implements ActionListener{
         Toolbox.edita_button(add_combobox,new Font("Dialog",Font.PLAIN,12),new Color(64,64,64),Color.WHITE);
         add_combobox.addActionListener(this);
 
-        Toolbox.implementa_button(add_radiobuttons,"Radiobuttons",15*PANEL_WIDTH/1000+675*PANEL_WIDTH/10000+675*PANEL_WIDTH/10000+675*PANEL_WIDTH/10000,PANEL_HEIGHT/3+PANEL_HEIGHT/30,675*PANEL_WIDTH/10000,PANEL_HEIGHT/30,right);
-        Toolbox.edita_button(add_radiobuttons,new Font("Dialog",Font.PLAIN,12),new Color(64,64,64),Color.WHITE);
-        add_radiobuttons.addActionListener(this);
+        Toolbox.implementa_button(add_radiobutton,"Radiobuttons",15*PANEL_WIDTH/1000+675*PANEL_WIDTH/10000+675*PANEL_WIDTH/10000+675*PANEL_WIDTH/10000,PANEL_HEIGHT/3+PANEL_HEIGHT/30,675*PANEL_WIDTH/10000,PANEL_HEIGHT/30,right);
+        Toolbox.edita_button(add_radiobutton,new Font("Dialog",Font.PLAIN,12),new Color(64,64,64),Color.WHITE);
+        add_radiobutton.addActionListener(this);
 
         Toolbox.implementa_button(add_table,"Table",15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+PANEL_HEIGHT/15,675*PANEL_WIDTH/10000,PANEL_HEIGHT/30,right);
         Toolbox.edita_button(add_table,new Font("Dialog",Font.PLAIN,12),new Color(64,64,64),Color.WHITE);
@@ -202,9 +202,13 @@ public class Right_panel extends JFrame implements ActionListener{
     public JTextField value = new JTextField();
     public JLabel type_button_group = new JLabel();
     public JTextField button_group = new JTextField();
-    
+    public JLabel type_combobox_items = new JLabel();
+    public JTextField combobox_items = new JTextField();
+    public JLabel type_combobox_initial_item = new JLabel();
+    public JTextField combobox_initial_item = new JTextField();    
 
     public void restart_detais_panel(){
+        details.setVisible(false);
         details.removeAll();
         details.setOpaque(true);
         details.setBackground(new Color(64,64,64));
@@ -212,87 +216,41 @@ public class Right_panel extends JFrame implements ActionListener{
         Toolbox.edita_button(add_item,new Font("Dialog",Font.PLAIN,12),new Color(0,128,0),Color.WHITE);
         add_item.addActionListener(this);
 
-        Toolbox.implementa_label(type_variable_name,"Variable name:",false,PANEL_WIDTH/15,PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/35,details);
-        Toolbox.edita_label(type_variable_name,null,null,Color.WHITE);
-        Toolbox.implementa_textfield(variable_name,"",2*PANEL_WIDTH/15,PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/35,true,true,details);
-        Toolbox.edita_textfield(variable_name,null,new Color(128,128,128),Color.WHITE,null,null);
-
-        Toolbox.implementa_label(type_X,"X:",false,0,PANEL_HEIGHT/80+PANEL_HEIGHT/35,PANEL_WIDTH/45,PANEL_HEIGHT/35,details);
-        Toolbox.edita_label(type_X,null,null,Color.WHITE);
-        Toolbox.implementa_combobox(X_pos,null,PANEL_WIDTH/45,PANEL_HEIGHT/80+PANEL_HEIGHT/35,PANEL_WIDTH/25,PANEL_HEIGHT/35,10,0,details);
-        Toolbox.edita_combobox(X_pos,null,new Color(32,32,32),Color.WHITE);
-
-        Toolbox.implementa_label(type_Y,"Y:",false,PANEL_WIDTH/45+PANEL_WIDTH/25,PANEL_HEIGHT/80+PANEL_HEIGHT/35,PANEL_WIDTH/45,PANEL_HEIGHT/35,details);
-        Toolbox.edita_label(type_Y,null,null,Color.WHITE);
-        Toolbox.implementa_combobox(Y_pos,null,PANEL_WIDTH/45+PANEL_WIDTH/25+PANEL_WIDTH/45,PANEL_HEIGHT/80+PANEL_HEIGHT/35,PANEL_WIDTH/25,PANEL_HEIGHT/35,10,0,details);
-        Toolbox.edita_combobox(Y_pos,null,new Color(32,32,32),Color.WHITE);
-
-        Toolbox.implementa_label(type_width,"Width:",false,2*PANEL_WIDTH/45+2*PANEL_WIDTH/25,PANEL_HEIGHT/80+PANEL_HEIGHT/35,PANEL_WIDTH/40,PANEL_HEIGHT/35,details);
-        Toolbox.edita_label(type_width,null,null,Color.WHITE);
-        Toolbox.implementa_combobox(width,null,2*PANEL_WIDTH/45+2*PANEL_WIDTH/25+PANEL_WIDTH/40,PANEL_HEIGHT/80+PANEL_HEIGHT/35,PANEL_WIDTH/25,PANEL_HEIGHT/35,10,0,details);
-        Toolbox.edita_combobox(width,null,new Color(32,32,32),Color.WHITE);
-
-        Toolbox.implementa_label(type_height,"Height:",false,2*PANEL_WIDTH/45+3*PANEL_WIDTH/25+PANEL_WIDTH/40,PANEL_HEIGHT/80+PANEL_HEIGHT/35,PANEL_WIDTH/35,PANEL_HEIGHT/35,details);
-        Toolbox.edita_label(type_height,null,null,Color.WHITE);
-        Toolbox.implementa_combobox(height,null,3*PANEL_WIDTH/40+3*PANEL_WIDTH/25+PANEL_WIDTH/40,PANEL_HEIGHT/80+PANEL_HEIGHT/35,PANEL_WIDTH/25,PANEL_HEIGHT/35,10,0,details);
-        Toolbox.edita_combobox(height,null,new Color(32,32,32),Color.WHITE);
-
-        Toolbox.implementa_button(content_background_color,"Background",PANEL_WIDTH/55,PANEL_HEIGHT/70+2*PANEL_HEIGHT/35,PANEL_WIDTH/12,PANEL_HEIGHT/35,details);
-        content_background_color.addActionListener(this);
-
-        Toolbox.implementa_button(content_foreground_color,"Foreground",PANEL_WIDTH/55+PANEL_WIDTH/12,PANEL_HEIGHT/70+2*PANEL_HEIGHT/35,PANEL_WIDTH/12,PANEL_HEIGHT/35,details);
-        content_foreground_color.addActionListener(this);
-
-        Toolbox.implementa_checkbox(border,"Border",PANEL_WIDTH/40+PANEL_WIDTH/6,PANEL_HEIGHT/70+2*PANEL_HEIGHT/35,PANEL_WIDTH/20,PANEL_HEIGHT/35,false,details);
-        Toolbox.edita_checkbox(border,null,new Color(64,64,64),Color.WHITE);
-
-        Toolbox.implementa_label(type_text,"Text:",false,0,PANEL_HEIGHT/70+3*PANEL_HEIGHT/35,PANEL_WIDTH/25,PANEL_HEIGHT/35,details);
-        Toolbox.edita_label(type_text,null,null,Color.WHITE);
-        Toolbox.implementa_textfield(text,"",PANEL_WIDTH/25,PANEL_HEIGHT/70+3*PANEL_HEIGHT/35,PANEL_WIDTH/8,PANEL_HEIGHT/35,true,true,details);
-        Toolbox.edita_textfield(text,null,new Color(128,128,128),Color.WHITE,null,null);
-
-        Toolbox.implementa_checkbox(editable,"Editable",PANEL_WIDTH/40+PANEL_WIDTH/6,PANEL_HEIGHT/70+3*PANEL_HEIGHT/35,PANEL_WIDTH/20,PANEL_HEIGHT/35,false,details);
-        Toolbox.edita_checkbox(editable,null,new Color(64,64,64),Color.WHITE);
-
-        Toolbox.implementa_label(type_font_family,"Font family:",false,0,PANEL_HEIGHT/60+4*PANEL_HEIGHT/35,PANEL_WIDTH/20,PANEL_HEIGHT/35,details);
-        Toolbox.edita_label(type_font_family,null,null,Color.WHITE);
-        Toolbox.implementa_combobox(font_family,null,PANEL_WIDTH/20,PANEL_HEIGHT/60+4*PANEL_HEIGHT/35,PANEL_WIDTH/15,PANEL_HEIGHT/35,4,0,details);
-        Toolbox.edita_combobox(font_family,null,new Color(64,64,64),Color.WHITE);
-
-        Toolbox.implementa_label(type_font_size,"Font size:",false,PANEL_WIDTH/20+PANEL_WIDTH/15,PANEL_HEIGHT/60+4*PANEL_HEIGHT/35,PANEL_WIDTH/25,PANEL_HEIGHT/35,details);
-        Toolbox.edita_label(type_font_size,null,null,Color.WHITE);
-        Toolbox.implementa_combobox(font_size,null,PANEL_WIDTH/20+PANEL_WIDTH/15+PANEL_WIDTH/25,PANEL_HEIGHT/60+4*PANEL_HEIGHT/35,PANEL_WIDTH/30,PANEL_HEIGHT/35,4,11,details);
-        Toolbox.edita_combobox(font_size,null,new Color(64,64,64),Color.WHITE);
-
-        Toolbox.implementa_checkbox(checked,"Checked",PANEL_WIDTH/40+PANEL_WIDTH/6,PANEL_HEIGHT/60+4*PANEL_HEIGHT/35,PANEL_WIDTH/20,PANEL_HEIGHT/35,false,details);
-        Toolbox.edita_checkbox(checked,null,new Color(64,64,64),Color.WHITE);
-
-        Toolbox.implementa_label(type_link,"Link:",false,0,PANEL_HEIGHT/50+5*PANEL_HEIGHT/35,PANEL_WIDTH/25,PANEL_HEIGHT/35,details);
-        Toolbox.edita_label(type_link,null,null,Color.WHITE);
-        Toolbox.implementa_textfield(link,"",PANEL_WIDTH/25,PANEL_HEIGHT/50+5*PANEL_HEIGHT/35,PANEL_WIDTH/8,PANEL_HEIGHT/35,true,true,details);
-        Toolbox.edita_textfield(link,null,new Color(128,128,128),Color.WHITE,null,null);
-
-        Toolbox.implementa_label(type_min,"Min:",false,0,PANEL_HEIGHT/40+6*PANEL_HEIGHT/35,PANEL_WIDTH/25,PANEL_HEIGHT/35,details);
-        Toolbox.edita_label(type_min,null,null,Color.WHITE);
-        Toolbox.implementa_textfield(min,"",PANEL_WIDTH/25,PANEL_HEIGHT/40+6*PANEL_HEIGHT/35,PANEL_WIDTH/35,PANEL_HEIGHT/35,true,true,details);
-        Toolbox.edita_textfield(min,null,new Color(128,128,128),Color.WHITE,null,null);
-        
-        Toolbox.implementa_label(type_max,"Max:",false,PANEL_WIDTH/25+PANEL_WIDTH/35,PANEL_HEIGHT/40+6*PANEL_HEIGHT/35,PANEL_WIDTH/25,PANEL_HEIGHT/35,details);
-        Toolbox.edita_label(type_max,null,null,Color.WHITE);
-        Toolbox.implementa_textfield(max,"",PANEL_WIDTH/20+2*PANEL_WIDTH/35,PANEL_HEIGHT/40+6*PANEL_HEIGHT/35,PANEL_WIDTH/35,PANEL_HEIGHT/35,true,true,details);
-        Toolbox.edita_textfield(max,null,new Color(128,128,128),Color.WHITE,null,null);
-
-        Toolbox.implementa_label(type_value,"Value:",false,PANEL_WIDTH/20+3*PANEL_WIDTH/35,PANEL_HEIGHT/40+6*PANEL_HEIGHT/35,PANEL_WIDTH/25,PANEL_HEIGHT/35,details);
-        Toolbox.edita_label(type_value,null,null,Color.WHITE);
-        Toolbox.implementa_textfield(value,"",PANEL_WIDTH/17+4*PANEL_WIDTH/35,PANEL_HEIGHT/40+6*PANEL_HEIGHT/35,PANEL_WIDTH/35,PANEL_HEIGHT/35,true,true,details);
-        Toolbox.edita_textfield(value,null,new Color(128,128,128),Color.WHITE,null,null);
-
-        Toolbox.implementa_label(type_button_group,"Bottom_group_name:",false,0,PANEL_HEIGHT/30+7*PANEL_HEIGHT/35,PANEL_WIDTH/10,PANEL_HEIGHT/35,details);
-        Toolbox.edita_label(type_button_group,null,null,Color.WHITE);
-        Toolbox.implementa_textfield(button_group,"",PANEL_WIDTH/10,PANEL_HEIGHT/30+7*PANEL_HEIGHT/35,PANEL_WIDTH/8,PANEL_HEIGHT/35,true,true,details);
-        Toolbox.edita_textfield(button_group,null,new Color(128,128,128),Color.WHITE,null,null);
+        type_variable_name.setVisible(false);
+        variable_name.setVisible(false);
+        type_X.setVisible(false);
+        X_pos.setVisible(false);
+        type_Y.setVisible(false);
+        Y_pos.setVisible(false);
+        type_width.setVisible(false);
+        width.setVisible(false);
+        type_height.setVisible(false);
+        height.setVisible(false);
+        content_foreground_color.setVisible(false);
+        content_background_color.setVisible(false);
+        border.setVisible(false);
+        type_text.setVisible(false);
+        text.setVisible(false);
+        editable.setVisible(false);
+        type_font_family.setVisible(false);
+        font_family.setVisible(false);
+        type_font_size.setVisible(false);
+        font_size.setVisible(false);
+        checked.setVisible(false);
+        type_link.setVisible(false);
+        link.setVisible(false);
+        type_min.setVisible(false);
+        min.setVisible(false);
+        type_max.setVisible(false);
+        max.setVisible(false);
+        type_value.setVisible(false);
+        value.setVisible(false);
+        type_button_group.setVisible(false);
+        button_group.setVisible(false);
 
     }
+
+    public String type = "null";
 
     @Override
     public void actionPerformed(ActionEvent e){
@@ -301,78 +259,417 @@ public class Right_panel extends JFrame implements ActionListener{
             if(newColor!=null){background_color.setBackground(newColor);}
         }
         else if(e.getSource()==add_label){
+            type="label";
             restart_detais_panel();
+
+            type_variable_name.setVisible(true);
+            variable_name.setVisible(true);
+            Toolbox.implementa_label(type_variable_name,"Type variable name:",false,0,PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_variable_name,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_textfield(variable_name,"",PANEL_WIDTH/10,PANEL_HEIGHT/100,PANEL_WIDTH/6,PANEL_HEIGHT/25,true,true,details);
+            Toolbox.edita_textfield(variable_name,new Font("Dialog",Font.PLAIN,14),new Color(128,128,128),Color.WHITE,null,null);
+
+            type_X.setVisible(true);
+            X_pos.setVisible(true);
+            Toolbox.implementa_label(type_X,"X:",false,PANEL_WIDTH/20,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_X,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(X_pos,null,PANEL_WIDTH/20+PANEL_WIDTH/30,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(X_pos,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_Y.setVisible(true);
+            Y_pos.setVisible(true);
+            Toolbox.implementa_label(type_Y,"Y:",false,PANEL_WIDTH/15+PANEL_WIDTH/30+PANEL_WIDTH/25,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_Y,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(Y_pos,null,PANEL_WIDTH/15+PANEL_WIDTH/15+PANEL_WIDTH/25,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(Y_pos,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_width.setVisible(true);
+            width.setVisible(true);
+            Toolbox.implementa_label(type_width,"Width:",false,PANEL_WIDTH/20,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_width,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(width,null,PANEL_WIDTH/20+PANEL_WIDTH/30,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(width,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_height.setVisible(true);
+            height.setVisible(true);
+            Toolbox.implementa_label(type_height,"Height:",false,PANEL_WIDTH/15+PANEL_WIDTH/30+PANEL_WIDTH/25,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_height,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(height,null,PANEL_WIDTH/15+PANEL_WIDTH/15+PANEL_WIDTH/25,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(height,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            content_background_color.setVisible(true);
+            Toolbox.implementa_button(content_background_color,"Background color",PANEL_WIDTH/50,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+
+            content_foreground_color.setVisible(true);
+            Toolbox.implementa_button(content_foreground_color,"Foreground color",PANEL_WIDTH/20+PANEL_WIDTH/10,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+
+            type_text.setVisible(true);
+            text.setVisible(true);
+            Toolbox.implementa_label(type_text,"Text:",false,PANEL_WIDTH/130,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_text,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_textfield(text,"",PANEL_WIDTH/25,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/5,PANEL_HEIGHT/25,true,true,details);
+            Toolbox.edita_textfield(text,new Font("Dialog",Font.PLAIN,14),new Color(128,128,128),Color.WHITE,null,null);
+
+            type_font_family.setVisible(true);
+            font_family.setVisible(true);
+            Toolbox.implementa_label(type_font_family,"Font family:",false,PANEL_WIDTH/80,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/20,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_font_family,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(font_family,null,PANEL_WIDTH/80+PANEL_WIDTH/20,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(font_family,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_font_size.setVisible(true);
+            font_size.setVisible(true);
+            Toolbox.implementa_label(type_font_size,"Font size:",false,PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/20,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_font_size,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(font_size,null,PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25+PANEL_WIDTH/20,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(font_size,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            border.setVisible(true);
+            Toolbox.implementa_checkbox(border,"Border",PANEL_WIDTH/9,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.edita_checkbox(border,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
 
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
         else if(e.getSource()==add_textfield){
+            type="textfield";
             restart_detais_panel();
 
-            Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);    
+            type_variable_name.setVisible(true);
+            variable_name.setVisible(true);
+            Toolbox.implementa_label(type_variable_name,"Type variable name:",false,0,PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_variable_name,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_textfield(variable_name,"",PANEL_WIDTH/10,PANEL_HEIGHT/100,PANEL_WIDTH/6,PANEL_HEIGHT/25,true,true,details);
+            Toolbox.edita_textfield(variable_name,new Font("Dialog",Font.PLAIN,14),new Color(128,128,128),Color.WHITE,null,null);
+
+            type_X.setVisible(true);
+            X_pos.setVisible(true);
+            Toolbox.implementa_label(type_X,"X:",false,PANEL_WIDTH/20,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_X,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(X_pos,null,PANEL_WIDTH/20+PANEL_WIDTH/30,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(X_pos,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_Y.setVisible(true);
+            Y_pos.setVisible(true);
+            Toolbox.implementa_label(type_Y,"Y:",false,PANEL_WIDTH/15+PANEL_WIDTH/30+PANEL_WIDTH/25,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_Y,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(Y_pos,null,PANEL_WIDTH/15+PANEL_WIDTH/15+PANEL_WIDTH/25,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(Y_pos,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_width.setVisible(true);
+            width.setVisible(true);
+            Toolbox.implementa_label(type_width,"Width:",false,PANEL_WIDTH/20,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_width,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(width,null,PANEL_WIDTH/20+PANEL_WIDTH/30,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(width,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_height.setVisible(true);
+            height.setVisible(true);
+            Toolbox.implementa_label(type_height,"Height:",false,PANEL_WIDTH/15+PANEL_WIDTH/30+PANEL_WIDTH/25,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_height,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(height,null,PANEL_WIDTH/15+PANEL_WIDTH/15+PANEL_WIDTH/25,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(height,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            content_background_color.setVisible(true);
+            Toolbox.implementa_button(content_background_color,"Background color",PANEL_WIDTH/50,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+
+            content_foreground_color.setVisible(true);
+            Toolbox.implementa_button(content_foreground_color,"Foreground color",PANEL_WIDTH/20+PANEL_WIDTH/10,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+
+            type_text.setVisible(true);
+            text.setVisible(true);
+            Toolbox.implementa_label(type_text,"Text:",false,PANEL_WIDTH/130,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_text,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_textfield(text,"",PANEL_WIDTH/25,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/5,PANEL_HEIGHT/25,true,true,details);
+            Toolbox.edita_textfield(text,new Font("Dialog",Font.PLAIN,14),new Color(128,128,128),Color.WHITE,null,null);
+
+            type_font_family.setVisible(true);
+            font_family.setVisible(true);
+            Toolbox.implementa_label(type_font_family,"Font family:",false,PANEL_WIDTH/80,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/20,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_font_family,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(font_family,null,PANEL_WIDTH/80+PANEL_WIDTH/20,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(font_family,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_font_size.setVisible(true);
+            font_size.setVisible(true);
+            Toolbox.implementa_label(type_font_size,"Font size:",false,PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/20,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_font_size,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(font_size,null,PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25+PANEL_WIDTH/20,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(font_size,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            border.setVisible(true);
+            Toolbox.implementa_checkbox(border,"Border",PANEL_WIDTH/18,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.edita_checkbox(border,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            
+            editable.setVisible(true);
+            Toolbox.implementa_checkbox(editable,"Editable",PANEL_WIDTH/6,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.edita_checkbox(editable,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+
+            Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
         else if(e.getSource()==add_passwordfield){
+            type="passwordfield";
             restart_detais_panel();
 
+            type_variable_name.setVisible(true);
+            variable_name.setVisible(true);
+            Toolbox.implementa_label(type_variable_name,"Type variable name:",false,0,PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_variable_name,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_textfield(variable_name,"",PANEL_WIDTH/10,PANEL_HEIGHT/100,PANEL_WIDTH/6,PANEL_HEIGHT/25,true,true,details);
+            Toolbox.edita_textfield(variable_name,new Font("Dialog",Font.PLAIN,14),new Color(128,128,128),Color.WHITE,null,null);
+
+            type_X.setVisible(true);
+            X_pos.setVisible(true);
+            Toolbox.implementa_label(type_X,"X:",false,PANEL_WIDTH/20,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_X,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(X_pos,null,PANEL_WIDTH/20+PANEL_WIDTH/30,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(X_pos,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_Y.setVisible(true);
+            Y_pos.setVisible(true);
+            Toolbox.implementa_label(type_Y,"Y:",false,PANEL_WIDTH/15+PANEL_WIDTH/30+PANEL_WIDTH/25,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_Y,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(Y_pos,null,PANEL_WIDTH/15+PANEL_WIDTH/15+PANEL_WIDTH/25,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(Y_pos,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_width.setVisible(true);
+            width.setVisible(true);
+            Toolbox.implementa_label(type_width,"Width:",false,PANEL_WIDTH/20,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_width,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(width,null,PANEL_WIDTH/20+PANEL_WIDTH/30,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(width,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_height.setVisible(true);
+            height.setVisible(true);
+            Toolbox.implementa_label(type_height,"Height:",false,PANEL_WIDTH/15+PANEL_WIDTH/30+PANEL_WIDTH/25,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_height,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(height,null,PANEL_WIDTH/15+PANEL_WIDTH/15+PANEL_WIDTH/25,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(height,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            content_background_color.setVisible(true);
+            Toolbox.implementa_button(content_background_color,"Background color",PANEL_WIDTH/50,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+
+            content_foreground_color.setVisible(true);
+            Toolbox.implementa_button(content_foreground_color,"Foreground color",PANEL_WIDTH/20+PANEL_WIDTH/10,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+
+            type_font_size.setVisible(true);
+            font_size.setVisible(true);
+            Toolbox.implementa_label(type_font_size,"Font size:",false,PANEL_WIDTH/12,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/20,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_font_size,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(font_size,null,PANEL_WIDTH/12+PANEL_WIDTH/20,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(font_size,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            border.setVisible(true);
+            Toolbox.implementa_checkbox(border,"Border",PANEL_WIDTH/9,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.edita_checkbox(border,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);            
             details.setVisible(true);
+
         }
         else if(e.getSource()==add_textarea){
+            type="textarea";
             restart_detais_panel();
+
+            type_variable_name.setVisible(true);
+            variable_name.setVisible(true);
+            Toolbox.implementa_label(type_variable_name,"Type variable name:",false,0,PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_variable_name,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_textfield(variable_name,"",PANEL_WIDTH/10,PANEL_HEIGHT/100,PANEL_WIDTH/6,PANEL_HEIGHT/25,true,true,details);
+            Toolbox.edita_textfield(variable_name,new Font("Dialog",Font.PLAIN,14),new Color(128,128,128),Color.WHITE,null,null);
+
+            type_X.setVisible(true);
+            X_pos.setVisible(true);
+            Toolbox.implementa_label(type_X,"X:",false,PANEL_WIDTH/20,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_X,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(X_pos,null,PANEL_WIDTH/20+PANEL_WIDTH/30,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(X_pos,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_Y.setVisible(true);
+            Y_pos.setVisible(true);
+            Toolbox.implementa_label(type_Y,"Y:",false,PANEL_WIDTH/15+PANEL_WIDTH/30+PANEL_WIDTH/25,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_Y,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(Y_pos,null,PANEL_WIDTH/15+PANEL_WIDTH/15+PANEL_WIDTH/25,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(Y_pos,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_width.setVisible(true);
+            width.setVisible(true);
+            Toolbox.implementa_label(type_width,"Width:",false,PANEL_WIDTH/20,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_width,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(width,null,PANEL_WIDTH/20+PANEL_WIDTH/30,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(width,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_height.setVisible(true);
+            height.setVisible(true);
+            Toolbox.implementa_label(type_height,"Height:",false,PANEL_WIDTH/15+PANEL_WIDTH/30+PANEL_WIDTH/25,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_height,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(height,null,PANEL_WIDTH/15+PANEL_WIDTH/15+PANEL_WIDTH/25,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(height,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            content_background_color.setVisible(true);
+            Toolbox.implementa_button(content_background_color,"Background color",PANEL_WIDTH/50,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+
+            content_foreground_color.setVisible(true);
+            Toolbox.implementa_button(content_foreground_color,"Foreground color",PANEL_WIDTH/20+PANEL_WIDTH/10,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+
+            type_text.setVisible(true);
+            text.setVisible(true);
+            Toolbox.implementa_label(type_text,"Text:",false,PANEL_WIDTH/130,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_text,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_textfield(text,"",PANEL_WIDTH/25,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/5,PANEL_HEIGHT/25,true,true,details);
+            Toolbox.edita_textfield(text,new Font("Dialog",Font.PLAIN,14),new Color(128,128,128),Color.WHITE,null,null);
+
+            type_font_family.setVisible(true);
+            font_family.setVisible(true);
+            Toolbox.implementa_label(type_font_family,"Font family:",false,PANEL_WIDTH/80,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/20,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_font_family,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(font_family,null,PANEL_WIDTH/80+PANEL_WIDTH/20,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(font_family,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_font_size.setVisible(true);
+            font_size.setVisible(true);
+            Toolbox.implementa_label(type_font_size,"Font size:",false,PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/20,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_font_size,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(font_size,null,PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25+PANEL_WIDTH/20,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(font_size,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            border.setVisible(true);
+            Toolbox.implementa_checkbox(border,"Border",PANEL_WIDTH/18,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.edita_checkbox(border,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            
+            editable.setVisible(true);
+            Toolbox.implementa_checkbox(editable,"Editable",PANEL_WIDTH/6,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.edita_checkbox(editable,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
 
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
         else if(e.getSource()==add_scrollpane){
+            type="scrollpane";
             restart_detais_panel();
+
 
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);            
             details.setVisible(true);
         }
         else if(e.getSource()==add_button){
+            type="button";
             restart_detais_panel();
+
+            type_variable_name.setVisible(true);
+            variable_name.setVisible(true);
+            Toolbox.implementa_label(type_variable_name,"Type variable name:",false,0,PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_variable_name,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_textfield(variable_name,"",PANEL_WIDTH/10,PANEL_HEIGHT/100,PANEL_WIDTH/6,PANEL_HEIGHT/25,true,true,details);
+            Toolbox.edita_textfield(variable_name,new Font("Dialog",Font.PLAIN,14),new Color(128,128,128),Color.WHITE,null,null);
+
+            type_X.setVisible(true);
+            X_pos.setVisible(true);
+            Toolbox.implementa_label(type_X,"X:",false,PANEL_WIDTH/20,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_X,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(X_pos,null,PANEL_WIDTH/20+PANEL_WIDTH/30,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(X_pos,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_Y.setVisible(true);
+            Y_pos.setVisible(true);
+            Toolbox.implementa_label(type_Y,"Y:",false,PANEL_WIDTH/15+PANEL_WIDTH/30+PANEL_WIDTH/25,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_Y,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(Y_pos,null,PANEL_WIDTH/15+PANEL_WIDTH/15+PANEL_WIDTH/25,PANEL_HEIGHT/25+2*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(Y_pos,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_width.setVisible(true);
+            width.setVisible(true);
+            Toolbox.implementa_label(type_width,"Width:",false,PANEL_WIDTH/20,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_width,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(width,null,PANEL_WIDTH/20+PANEL_WIDTH/30,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(width,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_height.setVisible(true);
+            height.setVisible(true);
+            Toolbox.implementa_label(type_height,"Height:",false,PANEL_WIDTH/15+PANEL_WIDTH/30+PANEL_WIDTH/25,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_height,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(height,null,PANEL_WIDTH/15+PANEL_WIDTH/15+PANEL_WIDTH/25,2*PANEL_HEIGHT/25+3*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(height,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            content_background_color.setVisible(true);
+            Toolbox.implementa_button(content_background_color,"Background color",PANEL_WIDTH/50,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+
+            content_foreground_color.setVisible(true);
+            Toolbox.implementa_button(content_foreground_color,"Foreground color",PANEL_WIDTH/20+PANEL_WIDTH/10,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+
+            type_text.setVisible(true);
+            text.setVisible(true);
+            Toolbox.implementa_label(type_text,"Text:",false,PANEL_WIDTH/130,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_text,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_textfield(text,"",PANEL_WIDTH/25,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/5,PANEL_HEIGHT/25,true,true,details);
+            Toolbox.edita_textfield(text,new Font("Dialog",Font.PLAIN,14),new Color(128,128,128),Color.WHITE,null,null);
+
+            type_font_family.setVisible(true);
+            font_family.setVisible(true);
+            Toolbox.implementa_label(type_font_family,"Font family:",false,PANEL_WIDTH/80,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/20,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_font_family,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(font_family,null,PANEL_WIDTH/80+PANEL_WIDTH/20,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(font_family,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
+
+            type_font_size.setVisible(true);
+            font_size.setVisible(true);
+            Toolbox.implementa_label(type_font_size,"Font size:",false,PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/20,PANEL_HEIGHT/25,details);
+            Toolbox.edita_label(type_font_size,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            Toolbox.implementa_combobox(font_size,null,PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25+PANEL_WIDTH/20,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.edita_combobox(font_size,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
 
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
         else if(e.getSource()==add_combobox){
+            type="combobox";
             restart_detais_panel();
 
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
-        else if(e.getSource()==add_radiobuttons){
+        else if(e.getSource()==add_radiobutton){
+            type="radiobutton";
             restart_detais_panel();
+
 
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
         else if(e.getSource()==add_table){
+            type="table";
             restart_detais_panel();
 
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
         else if(e.getSource()==add_image){
+            type="image";
             restart_detais_panel();
+
 
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
         else if(e.getSource()==add_bar){
+            type="bar";
             restart_detais_panel();
 
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
         else if(e.getSource()==add_checkbox){
+            type="checkbox";
             restart_detais_panel();
 
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
         else if(e.getSource()==add_item){
+            //add
+            
+            type="null";
             details.removeAll();
             details.setVisible(false);
         }
