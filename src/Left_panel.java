@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Label;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;

@@ -1,18 +1,20 @@
-import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.tools.Tool;
 
 public class Right_panel extends JFrame implements ActionListener{
     
@@ -21,8 +23,13 @@ public class Right_panel extends JFrame implements ActionListener{
     private static int PANEL_WIDTH=-1;
     private static int PANEL_HEIGHT=-1;
 
+    private JCheckBox opaque_panel = new JCheckBox();
     private JButton background_color = new JButton();
-    
+    private JComboBox<String> width_combobox = new JComboBox<String>();
+    private JComboBox<String> height_combobox = new JComboBox<String>();
+    private JComboBox<String> x_combobox = new JComboBox<String>();
+    private JComboBox<String> y_combobox = new JComboBox<String>();
+
     private JButton add_label = new JButton();
     private JButton add_textfield = new JButton();
     private JButton add_passwordfield = new JButton();
@@ -33,7 +40,6 @@ public class Right_panel extends JFrame implements ActionListener{
     private JButton add_radiobutton = new JButton();
     private JButton add_table = new JButton();
     private JButton add_image = new JButton();
-    //private JButton add_drag_drop = new JButton();
     private JButton add_bar = new JButton();
     private JButton add_checkbox = new JButton();
 
@@ -63,42 +69,41 @@ public class Right_panel extends JFrame implements ActionListener{
         JLabel width = new JLabel();
         Toolbox.implementa_label(width,"Width:",false,0,2*PANEL_HEIGHT/15,PANEL_WIDTH/20,PANEL_HEIGHT/25,right);
         Toolbox.edita_label(width,new Font("Dialog",Font.PLAIN,14),null,Color.WHITE);
-        JComboBox width_combobox = new JComboBox();
-        width_combobox=new JComboBox(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
+        width_combobox=new JComboBox<String>(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
         Toolbox.implementa_combobox(width_combobox,null,PANEL_WIDTH/20,2*PANEL_HEIGHT/15,PANEL_WIDTH/20,PANEL_HEIGHT/25,10,100,right);
         Toolbox.edita_combobox(width_combobox,new Font("Dialog",Font.PLAIN,12),new Color(64,64,64),Color.WHITE);
-
+        width_combobox.addItemListener(il);
 
         JLabel height = new JLabel();
         Toolbox.implementa_label(height,"Height:",false,PANEL_WIDTH/9,2*PANEL_HEIGHT/15,PANEL_WIDTH/20,PANEL_HEIGHT/25,right);
         Toolbox.edita_label(height,new Font("Dialog",Font.PLAIN,14),null,Color.WHITE);
-        JComboBox height_combobox = new JComboBox();
-        height_combobox=new JComboBox(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
+        height_combobox=new JComboBox<String>(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
         Toolbox.implementa_combobox(height_combobox,null,PANEL_WIDTH/9+PANEL_WIDTH/20,2*PANEL_HEIGHT/15,PANEL_WIDTH/20,PANEL_HEIGHT/25,10,100,right);
         Toolbox.edita_combobox(height_combobox,new Font("Dialog",Font.PLAIN,12),new Color(64,64,64),Color.WHITE);
+        height_combobox.addItemListener(il);
 
 
         JLabel x = new JLabel();
         Toolbox.implementa_label(x,"X:",false,0,2*PANEL_HEIGHT/15+PANEL_HEIGHT/20,PANEL_WIDTH/20,PANEL_HEIGHT/25,right);
         Toolbox.edita_label(x,new Font("Dialog",Font.PLAIN,14),null,Color.WHITE);
-        JComboBox x_combobox = new JComboBox();
-        x_combobox=new JComboBox(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
-        Toolbox.implementa_combobox(x_combobox,null,PANEL_WIDTH/20,2*PANEL_HEIGHT/15+PANEL_HEIGHT/20,PANEL_WIDTH/20,PANEL_HEIGHT/25,10,100,right);
+        x_combobox=new JComboBox<String>(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
+        Toolbox.implementa_combobox(x_combobox,null,PANEL_WIDTH/20,2*PANEL_HEIGHT/15+PANEL_HEIGHT/20,PANEL_WIDTH/20,PANEL_HEIGHT/25,10,0,right);
         Toolbox.edita_combobox(x_combobox,new Font("Dialog",Font.PLAIN,12),new Color(64,64,64),Color.WHITE);
+        x_combobox.addItemListener(il);
 
         
         JLabel y = new JLabel();
         Toolbox.implementa_label(y,"Y:",false,PANEL_WIDTH/9,2*PANEL_HEIGHT/15+PANEL_HEIGHT/20,PANEL_WIDTH/20,PANEL_HEIGHT/25,right);
         Toolbox.edita_label(y,new Font("Dialog",Font.PLAIN,14),null,Color.WHITE);
-        JComboBox y_combobox = new JComboBox();
-        y_combobox=new JComboBox(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
-        Toolbox.implementa_combobox(y_combobox,null,PANEL_WIDTH/9+PANEL_WIDTH/20,2*PANEL_HEIGHT/15+PANEL_HEIGHT/20,PANEL_WIDTH/20,PANEL_HEIGHT/25,10,100,right);
+        y_combobox=new JComboBox<String>(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
+        Toolbox.implementa_combobox(y_combobox,null,PANEL_WIDTH/9+PANEL_WIDTH/20,2*PANEL_HEIGHT/15+PANEL_HEIGHT/20,PANEL_WIDTH/20,PANEL_HEIGHT/25,10,0,right);
         Toolbox.edita_combobox(y_combobox,new Font("Dialog",Font.PLAIN,12),new Color(64,64,64),Color.WHITE);
-        
+        y_combobox.addItemListener(il);
 
-        JCheckBox opaque = new JCheckBox();
-        Toolbox.implementa_checkbox(opaque,"Opaque",PANEL_WIDTH/5+PANEL_WIDTH/25,2*PANEL_HEIGHT/15,PANEL_WIDTH/20,PANEL_HEIGHT/25,false,right);
-        Toolbox.edita_checkbox(opaque,new Font("Dialog",Font.PLAIN,12),new Color(32,32,32),Color.WHITE);
+
+        Toolbox.implementa_checkbox(opaque_panel,"Opaque",PANEL_WIDTH/5+PANEL_WIDTH/25,2*PANEL_HEIGHT/15,PANEL_WIDTH/20,PANEL_HEIGHT/25,false,right);
+        Toolbox.edita_checkbox(opaque_panel,new Font("Dialog",Font.PLAIN,12),new Color(32,32,32),Color.WHITE);
+        opaque_panel.addActionListener(this);
 
         
         Toolbox.implementa_button(background_color,"Color",PANEL_WIDTH/5+PANEL_WIDTH/25,2*PANEL_HEIGHT/15+PANEL_HEIGHT/20,PANEL_WIDTH/20,PANEL_HEIGHT/25,right);
@@ -164,6 +169,12 @@ public class Right_panel extends JFrame implements ActionListener{
         Toolbox.edita_button(add_checkbox,new Font("Dialog",Font.PLAIN,12),new Color(64,64,64),Color.WHITE);
         add_checkbox.addActionListener(this);
 
+        //UNIQUE ATRIBUITION OF ACTIONLISTENERS TO BUTTONS
+        preview_item.addActionListener(this);
+        add_item.addActionListener(this);
+        content_background_color.addActionListener(this);
+        content_foreground_color.addActionListener(this);
+
         details.setVisible(false);
 
         right.setOpaque(true);
@@ -175,13 +186,13 @@ public class Right_panel extends JFrame implements ActionListener{
     public JLabel type_variable_name = new JLabel();
     public JTextField variable_name = new JTextField();
     public JLabel type_X = new JLabel();
-    public JComboBox X_pos = new JComboBox(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
+    public JComboBox<String> X_pos = new JComboBox<String>(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
     public JLabel type_Y = new JLabel();
-    public JComboBox Y_pos = new JComboBox(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
+    public JComboBox<String> Y_pos = new JComboBox<String>(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
     public JLabel type_width = new JLabel();
-    public JComboBox width = new JComboBox(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
+    public JComboBox<String> width = new JComboBox<String>(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
     public JLabel type_height = new JLabel();
-    public JComboBox height = new JComboBox(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
+    public JComboBox<String> height = new JComboBox<String>(new String[]{"0%","1%","2%","3%","4%","5%","6%","7%","8%","9%","10%","11%","12%","13%","14%","15%","16%","17%","18%","19%","20%","21%","22%","23%","24%","25%","26%","27%","28%","29%","30%","31%","32%","33%","34%","35%","36%","37%","38%","39%","40%","41%","42%","43%","44%","45%","46%","47%","48%","49%","50%","51%","52%","53%","54%","55%","56%","57%","58%","59%","60%","61%","62%","63%","64%","65%","66%","67%","68%","69%","70%","71%","72%","73%","74%","75%","76%","77%","78%","79%","80%","81%","82%","83%","84%","85%","86%","87%","88%","89%","90%","91%","92%","93%","94%","95%","96%","97%","98%","99%","100%"});
     public JButton content_foreground_color = new JButton();
     public JButton content_background_color = new JButton();
     public JCheckBox border = new JCheckBox();
@@ -189,9 +200,9 @@ public class Right_panel extends JFrame implements ActionListener{
     public JTextField text = new JTextField();
     public JCheckBox editable = new JCheckBox();
     public JLabel type_font_family = new JLabel();
-    public JComboBox font_family = new JComboBox(new String[]{"Dialog","Serif","SansSerif","Monospaced"});
+    public JComboBox<String> font_family = new JComboBox<String>(new String[]{"Dialog","Serif","SansSerif","Monospaced"});
     public JLabel type_font_size = new JLabel();
-    public JComboBox font_size = new JComboBox(new String[]{"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"});
+    public JComboBox<String> font_size = new JComboBox<String>(new String[]{"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"});
     public JCheckBox checked = new JCheckBox();
     public JLabel type_link = new JLabel();
     public JTextField link = new JTextField();
@@ -209,6 +220,7 @@ public class Right_panel extends JFrame implements ActionListener{
     public JTextField combobox_initial_item = new JTextField();
     public JLabel type_combobox_rows_displayed = new JLabel();
     public JTextField combobox_combobox_rows_displayed = new JTextField();
+    public JCheckBox opaque = new JCheckBox();
 
     public void restart_detais_panel(){
         details.setVisible(false);
@@ -218,12 +230,10 @@ public class Right_panel extends JFrame implements ActionListener{
 
         Toolbox.implementa_button(add_item,"ADD",2685*PANEL_WIDTH/20000,PANEL_HEIGHT-21*PANEL_HEIGHT/35,2685*PANEL_WIDTH/20000,PANEL_HEIGHT/35,details);
         Toolbox.edita_button(add_item,new Font("Dialog",Font.PLAIN,12),new Color(0,128,0),Color.WHITE);
-        add_item.addActionListener(this);
         add_item.setVisible(true);
 
         Toolbox.implementa_button(preview_item,"PREVIEW",0,PANEL_HEIGHT-21*PANEL_HEIGHT/35,2685*PANEL_WIDTH/20000,PANEL_HEIGHT/35,details);
         Toolbox.edita_button(preview_item,new Font("Dialog",Font.PLAIN,12),new Color(128,0,0),Color.WHITE);
-        preview_item.addActionListener(this);
         preview_item.setVisible(true);
 
         type_variable_name.setVisible(false);
@@ -263,16 +273,25 @@ public class Right_panel extends JFrame implements ActionListener{
         combobox_initial_item.setVisible(false);
         type_combobox_rows_displayed.setVisible(false);
         combobox_combobox_rows_displayed.setVisible(false);
+        opaque.setVisible(false);
 
     }
 
     public String type = "null";
+    public JComponent preview = null;
 
     @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==background_color){
             Color newColor = JColorChooser.showDialog(null, "Select a color", new Color(238,238,238));
-            if(newColor!=null){background_color.setBackground(newColor);}
+            if(newColor!=null){
+                Interface.center.setBackground(newColor);
+                background_color.setBackground(newColor);
+            }
+        }
+        else if(e.getSource()==opaque_panel){
+            if(Interface.center.isOpaque()){Interface.center.setOpaque(false);}
+            else{Interface.center.setOpaque(true);}
         }
         else if(e.getSource()==content_background_color){
             Color newColor = JColorChooser.showDialog(null, "Select a color", new Color(238,238,238));
@@ -323,10 +342,10 @@ public class Right_panel extends JFrame implements ActionListener{
 
             content_background_color.setVisible(true);
             Toolbox.implementa_button(content_background_color,"Background color",PANEL_WIDTH/50,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             content_foreground_color.setVisible(true);
             Toolbox.implementa_button(content_foreground_color,"Foreground color",PANEL_WIDTH/20+PANEL_WIDTH/10,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             type_text.setVisible(true);
             text.setVisible(true);
             Toolbox.implementa_label(type_text,"Text:",false,PANEL_WIDTH/130,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
@@ -349,8 +368,12 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.edita_combobox(font_size,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
 
             border.setVisible(true);
-            Toolbox.implementa_checkbox(border,"Border",PANEL_WIDTH/9,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.implementa_checkbox(border,"Border",PANEL_WIDTH/18,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
             Toolbox.edita_checkbox(border,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            
+            opaque.setVisible(true);
+            Toolbox.implementa_checkbox(opaque,"Opaque",PANEL_WIDTH/6,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.edita_checkbox(opaque,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
 
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
@@ -396,10 +419,10 @@ public class Right_panel extends JFrame implements ActionListener{
 
             content_background_color.setVisible(true);
             Toolbox.implementa_button(content_background_color,"Background color",PANEL_WIDTH/50,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             content_foreground_color.setVisible(true);
             Toolbox.implementa_button(content_foreground_color,"Foreground color",PANEL_WIDTH/20+PANEL_WIDTH/10,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             type_text.setVisible(true);
             text.setVisible(true);
             Toolbox.implementa_label(type_text,"Text:",false,PANEL_WIDTH/130,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
@@ -422,11 +445,15 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.edita_combobox(font_size,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
 
             border.setVisible(true);
-            Toolbox.implementa_checkbox(border,"Border",PANEL_WIDTH/18,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.implementa_checkbox(border,"Border",PANEL_WIDTH/40,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
             Toolbox.edita_checkbox(border,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
             
+            opaque.setVisible(true);
+            Toolbox.implementa_checkbox(opaque,"Opaque",PANEL_WIDTH/9,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.edita_checkbox(opaque,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+
             editable.setVisible(true);
-            Toolbox.implementa_checkbox(editable,"Editable",PANEL_WIDTH/6,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.implementa_checkbox(editable,"Editable",PANEL_WIDTH/5,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
             Toolbox.edita_checkbox(editable,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
 
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
@@ -473,7 +500,7 @@ public class Right_panel extends JFrame implements ActionListener{
 
             content_background_color.setVisible(true);
             Toolbox.implementa_button(content_background_color,"Background color",PANEL_WIDTH/50,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             content_foreground_color.setVisible(true);
             Toolbox.implementa_button(content_foreground_color,"Foreground color",PANEL_WIDTH/20+PANEL_WIDTH/10,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
 
@@ -485,8 +512,12 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.edita_combobox(font_size,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
 
             border.setVisible(true);
-            Toolbox.implementa_checkbox(border,"Border",PANEL_WIDTH/9,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.implementa_checkbox(border,"Border",PANEL_WIDTH/18,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
             Toolbox.edita_checkbox(border,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            
+            opaque.setVisible(true);
+            Toolbox.implementa_checkbox(opaque,"Opaque",PANEL_WIDTH/6,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.edita_checkbox(opaque,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
             
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);            
             details.setVisible(true);
@@ -533,10 +564,10 @@ public class Right_panel extends JFrame implements ActionListener{
 
             content_background_color.setVisible(true);
             Toolbox.implementa_button(content_background_color,"Background color",PANEL_WIDTH/50,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             content_foreground_color.setVisible(true);
             Toolbox.implementa_button(content_foreground_color,"Foreground color",PANEL_WIDTH/20+PANEL_WIDTH/10,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             type_text.setVisible(true);
             text.setVisible(true);
             Toolbox.implementa_label(type_text,"Text:",false,PANEL_WIDTH/130,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
@@ -618,10 +649,10 @@ public class Right_panel extends JFrame implements ActionListener{
 
             content_background_color.setVisible(true);
             Toolbox.implementa_button(content_background_color,"Background color",PANEL_WIDTH/50,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             content_foreground_color.setVisible(true);
             Toolbox.implementa_button(content_foreground_color,"Foreground color",PANEL_WIDTH/20+PANEL_WIDTH/10,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             type_text.setVisible(true);
             text.setVisible(true);
             Toolbox.implementa_label(type_text,"Text:",false,PANEL_WIDTH/130,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
@@ -687,10 +718,10 @@ public class Right_panel extends JFrame implements ActionListener{
 
             content_background_color.setVisible(true);
             Toolbox.implementa_button(content_background_color,"Background color",PANEL_WIDTH/50,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             content_foreground_color.setVisible(true);
             Toolbox.implementa_button(content_foreground_color,"Foreground color",PANEL_WIDTH/20+PANEL_WIDTH/10,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             type_text.setVisible(true);
             text.setVisible(true);
             Toolbox.implementa_label(type_text,"Text:",false,PANEL_WIDTH/130,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
@@ -777,10 +808,10 @@ public class Right_panel extends JFrame implements ActionListener{
 
             content_background_color.setVisible(true);
             Toolbox.implementa_button(content_background_color,"Background color",PANEL_WIDTH/50,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             content_foreground_color.setVisible(true);
             Toolbox.implementa_button(content_foreground_color,"Foreground color",PANEL_WIDTH/20+PANEL_WIDTH/10,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             type_text.setVisible(true);
             text.setVisible(true);
             Toolbox.implementa_label(type_text,"Text:",false,PANEL_WIDTH/130,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
@@ -808,6 +839,10 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.edita_label(type_button_group,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
             Toolbox.implementa_textfield(button_group,"",PANEL_WIDTH/9,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/8,PANEL_HEIGHT/25,true,true,details);
             Toolbox.edita_textfield(button_group,new Font("Dialog",Font.PLAIN,14),new Color(128,128,128),Color.WHITE,null,null);
+
+            opaque.setVisible(true);
+            Toolbox.implementa_checkbox(opaque,"Opaque",PANEL_WIDTH/9,7*PANEL_HEIGHT/25+8*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.edita_checkbox(opaque,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
 
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
@@ -909,10 +944,10 @@ public class Right_panel extends JFrame implements ActionListener{
 
             content_background_color.setVisible(true);
             Toolbox.implementa_button(content_background_color,"Background color",PANEL_WIDTH/50,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             content_foreground_color.setVisible(true);
             Toolbox.implementa_button(content_foreground_color,"Foreground color",PANEL_WIDTH/20+PANEL_WIDTH/10,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             type_value.setVisible(true);
             value.setVisible(true);
             Toolbox.implementa_label(type_value,"Value:",false,0,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,details);
@@ -978,10 +1013,10 @@ public class Right_panel extends JFrame implements ActionListener{
 
             content_background_color.setVisible(true);
             Toolbox.implementa_button(content_background_color,"Background color",PANEL_WIDTH/50,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             content_foreground_color.setVisible(true);
             Toolbox.implementa_button(content_foreground_color,"Foreground color",PANEL_WIDTH/20+PANEL_WIDTH/10,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-
+            
             type_text.setVisible(true);
             text.setVisible(true);
             Toolbox.implementa_label(type_text,"Text:",false,PANEL_WIDTH/130,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
@@ -1004,14 +1039,62 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.edita_combobox(font_size,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
 
             checked.setVisible(true);
-            Toolbox.implementa_checkbox(checked,"Checked",PANEL_WIDTH/9,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.implementa_checkbox(checked,"Checked",PANEL_WIDTH/18,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
             Toolbox.edita_checkbox(checked,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
+            
+            opaque.setVisible(true);
+            Toolbox.implementa_checkbox(opaque,"Opaque",PANEL_WIDTH/6,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,false,details);
+            Toolbox.edita_checkbox(opaque,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
 
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
         else if(e.getSource()==preview_item){
-            
+            if(type.equals("label")){
+                
+                if(preview!=null){
+                    Interface.center.setVisible(false);
+                    Interface.center.remove(preview);
+                    Interface.center.setVisible(true);
+                }
+                preview=null;
+                preview = new JLabel();
+                
+                preview.setBounds(
+                    (int)(Interface.center.getWidth()*((float)X_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)Y_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getWidth()*((float)width.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)height.getSelectedIndex()/100))
+                );
+                if(opaque.isSelected()){preview.setOpaque(true);}
+                else{preview.setOpaque(false);preview.setBackground(new Color(0,0,0,64));}
+                preview.setBackground(content_background_color.getBackground());
+                preview.setForeground(content_foreground_color.getBackground());
+                preview.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+                ((JLabel)preview).setHorizontalAlignment(JLabel.CENTER);
+                ((JLabel)preview).setText(text.getText());
+                if(border.isSelected()){preview.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
+                else{preview.setBorder(null);}
+                Interface.center.setVisible(false);
+                Interface.center.add(preview);
+                Interface.center.setVisible(true);
+            }
+            else if(type.equals("textfield")){
+                if(preview!=null){
+                    Interface.center.setVisible(false);
+                    Interface.center.remove(preview);
+                    Interface.center.setVisible(true);
+                }
+                preview=null;
+                preview=new JTextField();
+            }
+            else if(type.equals("passwordfield")){
+                
+            }
+            else if(type.equals("textarea")){
+                
+            }
+
         }
         else if(e.getSource()==add_item){
             //add
@@ -1024,5 +1107,28 @@ public class Right_panel extends JFrame implements ActionListener{
         }
 
     }
+
+    int value_width=100;
+    int value_height=100;
+    int value_x=0;
+    int value_y=0;
+
+    ItemListener il = new ItemListener(){
+        @Override
+        public void itemStateChanged(ItemEvent event){
+            if(event.getStateChange() == ItemEvent.SELECTED){
+                value_width = width_combobox.getSelectedIndex();
+                value_height = height_combobox.getSelectedIndex();
+                value_x = x_combobox.getSelectedIndex();
+                value_y = y_combobox.getSelectedIndex();
+                Interface.center.setBounds(
+                    (int)(PANEL_WIDTH/5+((float)value_x/200)*PANEL_WIDTH),
+                    (int)(PANEL_HEIGHT/4+((float)value_y/200)*PANEL_HEIGHT),
+                    (int)(((float)value_width/200)*PANEL_WIDTH),
+                    (int)(((float)value_height/200)*PANEL_HEIGHT)
+                );
+            }
+        }
+    };
 
 }

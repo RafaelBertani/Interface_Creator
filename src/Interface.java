@@ -16,6 +16,8 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
     private JPanel main_screen_panel = new JPanel();
     private JMenuBar menubar = new JMenuBar();
     
+    public static JPanel center = new JPanel();
+
     public void create_main_screen(){
         
         //MAIOR
@@ -45,10 +47,21 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         // menubar.add(OP2);
         // framePRINCIPAL.setJMenuBar(menubar);
 
-        JPanel left = Left_panel.return_Left_panel(LARGURA_PANEL_JFRAME,ALTURA_PANEL_JFRAME);
-        Toolbox.implementa_panel_no_panel(left,main_screen_panel,0,0,LARGURA_PANEL_JFRAME/5,ALTURA_PANEL_JFRAME);
-        JPanel center = Center_panel.return_Center_panel();
+        JPanel lp = Left_panel.return_Left_panel(LARGURA_PANEL_JFRAME,ALTURA_PANEL_JFRAME);
+        Toolbox.implementa_panel_no_panel(lp,main_screen_panel,0,0,LARGURA_PANEL_JFRAME/5,ALTURA_PANEL_JFRAME);
+        
+        JLabel upside_line = new JLabel();
+        Toolbox.implementa_label(upside_line,"",false,LARGURA_PANEL_JFRAME/5,ALTURA_PANEL_JFRAME/4-20,LARGURA_PANEL_JFRAME/2,20,main_screen_panel);
+        Toolbox.edita_label(upside_line,null,new Color(32,32,32),null);
+
         Toolbox.implementa_panel_no_panel(center,main_screen_panel,LARGURA_PANEL_JFRAME/5,ALTURA_PANEL_JFRAME/4,LARGURA_PANEL_JFRAME/2,ALTURA_PANEL_JFRAME/2);
+        center.setOpaque(true);
+        center.setBackground(new Color(238,238,238));
+        
+        JLabel downside_line = new JLabel();
+        Toolbox.implementa_label(downside_line,"",false,LARGURA_PANEL_JFRAME/5,ALTURA_PANEL_JFRAME/4+ALTURA_PANEL_JFRAME/2,LARGURA_PANEL_JFRAME/2,20,main_screen_panel);
+        Toolbox.edita_label(downside_line,null,new Color(32,32,32),null);
+
         Right_panel rp = new Right_panel();
         JPanel right = rp.return_Right_panel(LARGURA_PANEL_JFRAME,ALTURA_PANEL_JFRAME);
         Toolbox.implementa_panel_no_panel(right,main_screen_panel,7*LARGURA_PANEL_JFRAME/10,0,3*LARGURA_PANEL_JFRAME/10,ALTURA_PANEL_JFRAME);
