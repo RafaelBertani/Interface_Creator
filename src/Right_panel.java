@@ -1,11 +1,19 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JColorChooser;
@@ -14,6 +22,9 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JProgressBar;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class Right_panel extends JFrame implements ActionListener{
@@ -721,47 +732,40 @@ public class Right_panel extends JFrame implements ActionListener{
             
             content_foreground_color.setVisible(true);
             Toolbox.implementa_button(content_foreground_color,"Foreground color",PANEL_WIDTH/20+PANEL_WIDTH/10,3*PANEL_HEIGHT/25+4*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
-            
-            type_text.setVisible(true);
-            text.setVisible(true);
-            Toolbox.implementa_label(type_text,"Text:",false,PANEL_WIDTH/130,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/30,PANEL_HEIGHT/25,details);
-            Toolbox.edita_label(type_text,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
-            Toolbox.implementa_textfield(text,"",PANEL_WIDTH/25,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/5,PANEL_HEIGHT/25,true,true,details);
-            Toolbox.edita_textfield(text,new Font("Dialog",Font.PLAIN,14),new Color(128,128,128),Color.WHITE,null,null);
 
             type_font_family.setVisible(true);
             font_family.setVisible(true);
-            Toolbox.implementa_label(type_font_family,"Font family:",false,PANEL_WIDTH/80,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/20,PANEL_HEIGHT/25,details);
+            Toolbox.implementa_label(type_font_family,"Font family:",false,PANEL_WIDTH/80,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/20,PANEL_HEIGHT/25,details);
             Toolbox.edita_label(type_font_family,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
-            Toolbox.implementa_combobox(font_family,null,PANEL_WIDTH/80+PANEL_WIDTH/20,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,10,0,details);
+            Toolbox.implementa_combobox(font_family,null,PANEL_WIDTH/80+PANEL_WIDTH/20,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/15,PANEL_HEIGHT/25,10,0,details);
             Toolbox.edita_combobox(font_family,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
 
             type_font_size.setVisible(true);
             font_size.setVisible(true);
-            Toolbox.implementa_label(type_font_size,"Font size:",false,PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/20,PANEL_HEIGHT/25,details);
+            Toolbox.implementa_label(type_font_size,"Font size:",false,PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/20,PANEL_HEIGHT/25,details);
             Toolbox.edita_label(type_font_size,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
-            Toolbox.implementa_combobox(font_size,null,PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25+PANEL_WIDTH/20,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,9,details);
+            Toolbox.implementa_combobox(font_size,null,PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25+PANEL_WIDTH/20,4*PANEL_HEIGHT/25+5*PANEL_HEIGHT/100,PANEL_WIDTH/25,PANEL_HEIGHT/25,10,9,details);
             Toolbox.edita_combobox(font_size,new Font("Dialog",Font.PLAIN,12),new Color(128,128,128),Color.WHITE);
 
             type_combobox_items.setVisible(true);
             combobox_items.setVisible(true);
-            Toolbox.implementa_label(type_combobox_items,"Type,combobox,items:",false,PANEL_WIDTH/130,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+            Toolbox.implementa_label(type_combobox_items,"Type,combobox,items:",false,PANEL_WIDTH/130,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
             Toolbox.edita_label(type_combobox_items,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
-            Toolbox.implementa_textfield(combobox_items,"",PANEL_WIDTH/9,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/8,PANEL_HEIGHT/25,true,true,details);
+            Toolbox.implementa_textfield(combobox_items,"",PANEL_WIDTH/9,5*PANEL_HEIGHT/25+6*PANEL_HEIGHT/100,PANEL_WIDTH/7,PANEL_HEIGHT/25,true,true,details);
             Toolbox.edita_textfield(combobox_items,new Font("Dialog",Font.PLAIN,14),new Color(128,128,128),Color.WHITE,null,null);
 
             type_combobox_initial_item.setVisible(true);
             combobox_initial_item.setVisible(true);
-            Toolbox.implementa_label(type_combobox_initial_item,"Initial item index:",false,PANEL_WIDTH/80,7*PANEL_HEIGHT/25+8*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
+            Toolbox.implementa_label(type_combobox_initial_item,"Initial item index:",false,PANEL_WIDTH/80,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/10,PANEL_HEIGHT/25,details);
             Toolbox.edita_label(type_combobox_initial_item,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
-            Toolbox.implementa_textfield(combobox_initial_item,"",PANEL_WIDTH/80+PANEL_WIDTH/10,7*PANEL_HEIGHT/25+8*PANEL_HEIGHT/100,PANEL_WIDTH/40,PANEL_HEIGHT/25,true,true,details);
+            Toolbox.implementa_textfield(combobox_initial_item,"",PANEL_WIDTH/80+PANEL_WIDTH/10,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/40,PANEL_HEIGHT/25,true,true,details);
             Toolbox.edita_textfield(combobox_initial_item,new Font("Dialog",Font.PLAIN,14),new Color(128,128,128),Color.WHITE,null,null);
             
             type_combobox_rows_displayed.setVisible(true);
             combobox_combobox_rows_displayed.setVisible(true);
-            Toolbox.implementa_label(type_combobox_rows_displayed,"Rows displayed:",false,PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25,7*PANEL_HEIGHT/25+8*PANEL_HEIGHT/100,PANEL_WIDTH/12,PANEL_HEIGHT/25,details);
+            Toolbox.implementa_label(type_combobox_rows_displayed,"Rows displayed:",false,PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/12,PANEL_HEIGHT/25,details);
             Toolbox.edita_label(type_combobox_rows_displayed,new Font("Dialog",Font.PLAIN,14),new Color(64,64,64),Color.WHITE);
-            Toolbox.implementa_textfield(combobox_combobox_rows_displayed,"",PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25+PANEL_WIDTH/12,7*PANEL_HEIGHT/25+8*PANEL_HEIGHT/100,PANEL_WIDTH/40,PANEL_HEIGHT/25,true,true,details);
+            Toolbox.implementa_textfield(combobox_combobox_rows_displayed,"",PANEL_WIDTH/15+PANEL_WIDTH/25+PANEL_WIDTH/25+PANEL_WIDTH/12,6*PANEL_HEIGHT/25+7*PANEL_HEIGHT/100,PANEL_WIDTH/40,PANEL_HEIGHT/25,true,true,details);
             Toolbox.edita_textfield(combobox_combobox_rows_displayed,new Font("Dialog",Font.PLAIN,14),new Color(128,128,128),Color.WHITE,null,null);
             
             Toolbox.implementa_panel_no_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
@@ -1057,9 +1061,114 @@ public class Right_panel extends JFrame implements ActionListener{
                     Interface.center.remove(preview);
                     Interface.center.setVisible(true);
                 }
-                preview=null;
+                preview = null;
                 preview = new JLabel();
                 
+                preview.setBounds(
+                    (int)(Interface.center.getWidth()*((float)X_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)Y_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getWidth()*((float)width.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)height.getSelectedIndex()/100))
+                );
+
+                if(opaque.isSelected()){preview.setOpaque(true);}
+                else{preview.setOpaque(false);preview.setBackground(new Color(0,0,0,64));}
+
+                preview.setBackground(content_background_color.getBackground());
+                preview.setForeground(content_foreground_color.getBackground());
+                preview.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                ((JLabel)preview).setHorizontalAlignment(JLabel.CENTER);
+                ((JLabel)preview).setText(text.getText());
+
+                if(border.isSelected()){preview.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
+                else{preview.setBorder(null);}
+
+                Interface.center.setVisible(false);
+                Interface.center.add(preview);
+                Interface.center.setVisible(true);
+            
+            }
+            else if(type.equals("textfield")){
+                
+                if(preview!=null){
+                    Interface.center.setVisible(false);
+                    Interface.center.remove(preview);
+                    Interface.center.setVisible(true);
+                }
+                preview=null;
+                preview=new JTextField();
+            
+                preview.setBounds(
+                    (int)(Interface.center.getWidth()*((float)X_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)Y_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getWidth()*((float)width.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)height.getSelectedIndex()/100))
+                );
+                
+                if(opaque.isSelected()){preview.setOpaque(true);}
+                else{preview.setOpaque(false);preview.setBackground(new Color(0,0,0,64));}
+                
+                preview.setBackground(content_background_color.getBackground());
+                preview.setForeground(content_foreground_color.getBackground());
+                preview.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+            
+                ((JTextField)preview).setHorizontalAlignment(JTextField.CENTER);
+                ((JTextField)preview).setText(text.getText());
+                
+                if(editable.isSelected()){((JTextField)preview).setEditable(true);}
+                else{((JTextField)preview).setEditable(false);}
+
+                if(border.isSelected()){preview.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
+                else{preview.setBorder(null);}
+                
+                Interface.center.setVisible(false);
+                Interface.center.add(preview);
+                Interface.center.setVisible(true);
+
+            }
+            else if(type.equals("passwordfield")){
+                
+                if(preview!=null){
+                    Interface.center.setVisible(false);
+                    Interface.center.remove(preview);
+                    Interface.center.setVisible(true);
+                }
+                preview=null;
+                preview=new JPasswordField();
+            
+                preview.setBounds(
+                    (int)(Interface.center.getWidth()*((float)X_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)Y_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getWidth()*((float)width.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)height.getSelectedIndex()/100))
+                );
+                if(opaque.isSelected()){preview.setOpaque(true);}
+                else{preview.setOpaque(false);preview.setBackground(new Color(0,0,0,64));}
+                preview.setBackground(content_background_color.getBackground());
+                preview.setForeground(content_foreground_color.getBackground());
+                preview.setFont(new Font("Dialog",Font.PLAIN,font_size.getSelectedIndex()+1));
+            
+                ((JPasswordField)preview).setHorizontalAlignment(JTextField.CENTER);
+                ((JPasswordField)preview).setText("");
+                
+                if(border.isSelected()){preview.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
+                else{preview.setBorder(null);}
+                Interface.center.setVisible(false);
+                Interface.center.add(preview);
+                Interface.center.setVisible(true);
+
+            }
+            else if(type.equals("textarea")){
+                
+                if(preview!=null){
+                    Interface.center.setVisible(false);
+                    Interface.center.remove(preview);
+                    Interface.center.setVisible(true);
+                }
+                preview=null;
+                preview=new JTextArea();
+            
                 preview.setBounds(
                     (int)(Interface.center.getWidth()*((float)X_pos.getSelectedIndex()/100)),
                     (int)(Interface.center.getHeight()*((float)Y_pos.getSelectedIndex()/100)),
@@ -1071,33 +1180,486 @@ public class Right_panel extends JFrame implements ActionListener{
                 preview.setBackground(content_background_color.getBackground());
                 preview.setForeground(content_foreground_color.getBackground());
                 preview.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
-                ((JLabel)preview).setHorizontalAlignment(JLabel.CENTER);
-                ((JLabel)preview).setText(text.getText());
+            
+                ((JTextArea)preview).setText(text.getText());
+                
+                if(editable.isSelected()){((JTextArea)preview).setEditable(true);}
+                else{((JTextArea)preview).setEditable(false);}
+
                 if(border.isSelected()){preview.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
                 else{preview.setBorder(null);}
+                
+                preview.setOpaque(true);
+
                 Interface.center.setVisible(false);
                 Interface.center.add(preview);
                 Interface.center.setVisible(true);
+
             }
-            else if(type.equals("textfield")){
+            else if(type.equals("scrollpane")){
+
+            }
+            else if(type.equals("button")){
+                
                 if(preview!=null){
                     Interface.center.setVisible(false);
                     Interface.center.remove(preview);
                     Interface.center.setVisible(true);
                 }
                 preview=null;
-                preview=new JTextField();
-            }
-            else if(type.equals("passwordfield")){
+                preview = new JButton();
                 
-            }
-            else if(type.equals("textarea")){
-                
-            }
+                preview.setBounds(
+                    (int)(Interface.center.getWidth()*((float)X_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)Y_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getWidth()*((float)width.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)height.getSelectedIndex()/100))
+                );
 
+                preview.setBackground(content_background_color.getBackground());
+                preview.setForeground(content_foreground_color.getBackground());
+                preview.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                ((JButton)preview).setHorizontalAlignment(JLabel.CENTER);
+                ((JButton)preview).setText(text.getText());
+
+                Interface.center.setVisible(false);
+                Interface.center.add(preview);
+                Interface.center.setVisible(true);
+
+            }
+            else if(type.equals("combobox")){
+                
+                if(preview!=null){
+                    Interface.center.setVisible(false);
+                    Interface.center.remove(preview);
+                    Interface.center.setVisible(true);
+                }
+                preview=null;
+
+                //add items
+                int n_of_items = 0;
+                for(int i=0;i<combobox_items.getText().length();i++){if(combobox_items.getText().charAt(i)==','){n_of_items++;}}
+                String[] items = new String[n_of_items+1];
+                String item = "";
+                int count = 0;
+                for(int i=0;i<combobox_items.getText().length();i++){
+                    if(combobox_items.getText().charAt(i)!=','){item+=combobox_items.getText().charAt(i);}
+                    else{items[count]=item;item="";count++;}
+                }
+                items[count]=item;
+                
+                preview = new JComboBox<String>(items);
+                
+                preview.setBounds(
+                    (int)(Interface.center.getWidth()*((float)X_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)Y_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getWidth()*((float)width.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)height.getSelectedIndex()/100))
+                );
+
+                preview.setBackground(content_background_color.getBackground());
+                preview.setForeground(content_foreground_color.getBackground());
+                preview.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                ((JComboBox<String>)preview).setAlignmentX(JComboBox.CENTER_ALIGNMENT);
+
+                ((JComboBox<String>)preview).setMaximumRowCount(Integer.parseInt(combobox_combobox_rows_displayed.getText()));
+                ((JComboBox<String>)preview).setSelectedIndex(Integer.parseInt(combobox_initial_item.getText()));
+
+                //centralize the items
+                DefaultListCellRenderer dlcr = new DefaultListCellRenderer();
+                dlcr.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
+                ((JComboBox<String>)preview).setRenderer(dlcr);
+
+                Interface.center.setVisible(false);
+                Interface.center.add(preview);
+                Interface.center.setVisible(true);
+                
+            }
+            else if(type.equals("radiobutton")){
+                
+            }
+            else if(type.equals("table")){
+                
+            }
+            else if(type.equals("image")){
+
+                if(preview!=null){
+                    Interface.center.setVisible(false);
+                    Interface.center.remove(preview);
+                    Interface.center.setVisible(true);
+                }
+                preview=null;
+                preview = new JLabel();
+                
+                preview.setBounds(
+                    (int)(Interface.center.getWidth()*((float)X_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)Y_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getWidth()*((float)width.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)height.getSelectedIndex()/100))
+                );
+
+                //temporary resize for the center panel
+                try {
+                    BufferedImage originalImage = ImageIO.read(new File(link.getText()));
+
+                    BufferedImage resizedImage = new BufferedImage(originalImage.getWidth()/2,originalImage.getHeight()/2,BufferedImage.TYPE_INT_RGB);
+                    Graphics2D graphics2d = resizedImage.createGraphics();
+            
+                    graphics2d.drawImage(originalImage,0,0,originalImage.getWidth()/2,originalImage.getHeight()/2,null);
+                    graphics2d.dispose();
+                    ((JLabel)preview).setIcon(new ImageIcon((Image)resizedImage));
+                } catch (Exception exception_resized) {
+                    exception_resized.printStackTrace();
+                }
+                //((JLabel)preview).setIcon(new ImageIcon(link.getText()));
+
+                Interface.center.setVisible(false);
+                Interface.center.add(preview);
+                Interface.center.setVisible(true);
+
+            }
+            else if(type.equals("bar")){
+                
+                if(preview!=null){
+                    Interface.center.setVisible(false);
+                    Interface.center.remove(preview);
+                    Interface.center.setVisible(true);
+                }
+                preview=null;
+                preview=new JProgressBar();
+
+                preview.setBounds(
+                    (int)(Interface.center.getWidth()*((float)X_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)Y_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getWidth()*((float)width.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)height.getSelectedIndex()/100))
+                );
+
+                ((JProgressBar)preview).setMinimum(Integer.parseInt(min.getText()));
+                ((JProgressBar)preview).setMaximum(Integer.parseInt(max.getText()));
+                ((JProgressBar)preview).setValue(Integer.parseInt(value.getText()));
+
+                preview.setBackground(content_background_color.getBackground());
+                preview.setForeground(content_foreground_color.getBackground());
+
+                Interface.center.setVisible(false);
+                Interface.center.add(preview);
+                Interface.center.setVisible(true);
+
+            }
+            else if(type.equals("checkbox")){
+
+                if(preview!=null){
+                    Interface.center.setVisible(false);
+                    Interface.center.remove(preview);
+                    Interface.center.setVisible(true);
+                }
+                preview=null;
+                preview=new JCheckBox();
+            
+                preview.setBounds(
+                    (int)(Interface.center.getWidth()*((float)X_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)Y_pos.getSelectedIndex()/100)),
+                    (int)(Interface.center.getWidth()*((float)width.getSelectedIndex()/100)),
+                    (int)(Interface.center.getHeight()*((float)height.getSelectedIndex()/100))
+                );
+
+                if(opaque.isSelected()){preview.setOpaque(true);}
+                else{preview.setOpaque(false);preview.setBackground(new Color(0,0,0,64));}
+                
+                preview.setBackground(content_background_color.getBackground());
+                preview.setForeground(content_foreground_color.getBackground());
+                
+                preview.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+                ((JCheckBox)preview).setText(text.getText());
+                ((JCheckBox)preview).setHorizontalAlignment(JCheckBox.CENTER);
+                
+                if(checked.isSelected()){((JCheckBox)preview).setSelected(true);}
+                else{((JCheckBox)preview).setSelected(true);}
+
+                Interface.center.setVisible(false);
+                Interface.center.add(preview);
+                Interface.center.setVisible(true);   
+
+            }
         }
         else if(e.getSource()==add_item){
             //add
+            if(type.equals("label")){
+                
+                JLabel temp = new JLabel();
+                
+                temp.setBounds(((JLabel)preview).getBounds());
+                
+                if(opaque.isSelected()){temp.setOpaque(true);}
+                else{temp.setOpaque(false);temp.setBackground(new Color(0,0,0,64));}
+
+                temp.setBackground(content_background_color.getBackground());
+                temp.setForeground(content_foreground_color.getBackground());
+                temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                ((JLabel)temp).setHorizontalAlignment(JLabel.CENTER);
+                ((JLabel)temp).setText(text.getText());
+
+                if(border.isSelected()){temp.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
+                else{temp.setBorder(null);}
+
+                Interface.center.setVisible(false);
+                Interface.center.remove(preview);
+                Center_panel.list_label.add(temp);
+                Center_panel.label_names.add(variable_name.getText());
+                Interface.center.add(Center_panel.list_label.getLast());
+                Interface.center.setVisible(true);
+            
+            }
+            else if(type.equals("textfield")){
+                
+                JTextField temp = new JTextField();
+                
+                temp.setBounds(((JTextField)preview).getBounds());
+                
+                if(opaque.isSelected()){temp.setOpaque(true);}
+                else{temp.setOpaque(false);temp.setBackground(new Color(0,0,0,64));}
+
+                temp.setBackground(content_background_color.getBackground());
+                temp.setForeground(content_foreground_color.getBackground());
+                temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                ((JTextField)temp).setHorizontalAlignment(JLabel.CENTER);
+                ((JTextField)temp).setText(text.getText());
+
+                if(editable.isSelected()){((JTextField)temp).setEditable(true);}
+                else{((JTextField)temp).setEditable(false);}
+
+                if(border.isSelected()){temp.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
+                else{temp.setBorder(null);}
+
+                Interface.center.setVisible(false);
+
+                Interface.center.remove(preview);
+                Center_panel.list_textfield.add(temp);
+                Center_panel.textfield_names.add(variable_name.getText());
+                Interface.center.add(Center_panel.list_textfield.getLast());
+
+                Interface.center.setVisible(true);
+
+            }
+            else if(type.equals("passwordfield")){
+                
+                JPasswordField temp = new JPasswordField();
+                
+                temp.setBounds(((JPasswordField)preview).getBounds());
+                
+                temp.setBackground(content_background_color.getBackground());
+                temp.setForeground(content_foreground_color.getBackground());
+                temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                ((JPasswordField)temp).setHorizontalAlignment(JLabel.CENTER);
+
+                if(opaque.isSelected()){temp.setOpaque(true);}
+                else{temp.setOpaque(false);temp.setBackground(new Color(0,0,0,64));}
+
+                if(border.isSelected()){temp.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
+                else{temp.setBorder(null);}
+
+                Interface.center.setVisible(false);
+
+                Interface.center.remove(preview);
+                Center_panel.list_passwordfield.add(temp);
+                Center_panel.passwordfield_names.add(variable_name.getText());
+                Interface.center.add(Center_panel.list_passwordfield.getLast());
+
+                Interface.center.setVisible(true);
+
+            }
+            else if(type.equals("textarea")){
+                
+                JTextArea temp = new JTextArea();
+                
+                temp.setBounds(((JTextArea)preview).getBounds());
+                
+                temp.setBackground(content_background_color.getBackground());
+                temp.setForeground(content_foreground_color.getBackground());
+                temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                ((JTextArea)temp).setText(text.getText());
+
+                if(editable.isSelected()){((JTextArea)temp).setEditable(true);}
+                else{((JTextArea)temp).setEditable(false);}
+
+                if(border.isSelected()){temp.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
+                else{temp.setBorder(null);}
+
+                preview.setOpaque(true);
+
+                Interface.center.setVisible(false);
+
+                Interface.center.remove(preview);
+                Center_panel.list_textarea.add(temp);
+                Center_panel.textarea_names.add(variable_name.getText());
+                Interface.center.add(Center_panel.list_textarea.getLast());
+
+                Interface.center.setVisible(true);
+
+            }
+            else if(type.equals("scrollpane")){
+
+            }
+            else if(type.equals("button")){
+                
+                JButton temp = new JButton();
+                
+                temp.setBounds(((JButton)preview).getBounds());
+                
+                temp.setBackground(content_background_color.getBackground());
+                temp.setForeground(content_foreground_color.getBackground());
+                temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                ((JButton)temp).setHorizontalAlignment(JLabel.CENTER);
+                ((JButton)temp).setText(text.getText());
+
+                Interface.center.setVisible(false);
+
+                Interface.center.remove(preview);
+                Center_panel.list_button.add(temp);
+                Center_panel.button_names.add(variable_name.getText());
+                Interface.center.add(Center_panel.list_button.getLast());
+
+                Interface.center.setVisible(true);
+
+            }
+            else if(type.equals("combobox")){
+                 
+                //add items
+                int n_of_items = 0;
+                for(int i=0;i<combobox_items.getText().length();i++){if(combobox_items.getText().charAt(i)==','){n_of_items++;}}
+                String[] items = new String[n_of_items+1];
+                String item = "";
+                int count = 0;
+                for(int i=0;i<combobox_items.getText().length();i++){
+                    if(combobox_items.getText().charAt(i)!=','){item+=combobox_items.getText().charAt(i);}
+                    else{items[count]=item;item="";count++;}
+                }
+                items[count]=item;
+                
+                JComboBox<String> temp = new JComboBox<String>(items);
+                
+                temp.setBounds(((JComboBox<String>)preview).getBounds());
+                
+                temp.setBackground(content_background_color.getBackground());
+                temp.setForeground(content_foreground_color.getBackground());
+                temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                ((JComboBox<String>)temp).setAlignmentX(JComboBox.CENTER_ALIGNMENT);
+                ((JComboBox<String>)temp).setMaximumRowCount(Integer.parseInt(combobox_combobox_rows_displayed.getText()));
+                ((JComboBox<String>)temp).setSelectedIndex(Integer.parseInt(combobox_initial_item.getText()));
+
+                //centralize the items
+                DefaultListCellRenderer dlcr = new DefaultListCellRenderer();
+                dlcr.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
+                ((JComboBox<String>)temp).setRenderer(dlcr);
+
+                Interface.center.setVisible(false);
+
+                Interface.center.remove(preview);
+                Center_panel.list_combobox.add(temp);
+                Center_panel.combobox_names.add(variable_name.getText());
+                Interface.center.add(Center_panel.list_combobox.getLast());
+
+                Interface.center.setVisible(true);
+
+            }
+            else if(type.equals("radiobutton")){
+                
+            }
+            else if(type.equals("table")){
+                
+            }
+            else if(type.equals("image")){
+                
+                JLabel temp = new JLabel();
+                
+                temp.setBounds(((JLabel)preview).getBounds());
+
+                //temporary resize for the center panel
+                try {
+                    BufferedImage originalImage = ImageIO.read(new File(link.getText()));
+
+                    BufferedImage resizedImage = new BufferedImage(originalImage.getWidth()/2,originalImage.getHeight()/2,BufferedImage.TYPE_INT_RGB);
+                    Graphics2D graphics2d = resizedImage.createGraphics();
+            
+                    graphics2d.drawImage(originalImage,0,0,originalImage.getWidth()/2,originalImage.getHeight()/2,null);
+                    graphics2d.dispose();
+                    ((JLabel)temp).setIcon(new ImageIcon((Image)resizedImage));
+                } catch (Exception exception_resized) {
+                    exception_resized.printStackTrace();
+                }
+                //((JLabel)temp).setIcon(new ImageIcon(link.getText()));       
+
+                Interface.center.setVisible(false);
+                Interface.center.remove(preview);
+                Center_panel.list_image.add(temp);
+                Center_panel.image_names.add(variable_name.getText());
+                Center_panel.sources_names.add(link.getText());
+                Interface.center.add(Center_panel.list_image.getLast());
+                Interface.center.setVisible(true);
+
+            }
+            else if(type.equals("bar")){
+                
+                JProgressBar temp = new JProgressBar();
+                
+                temp.setBounds(((JProgressBar)preview).getBounds());
+                
+                temp.setBackground(content_background_color.getBackground());
+                temp.setForeground(content_foreground_color.getBackground());
+                temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                ((JProgressBar)temp).setMinimum(Integer.parseInt(min.getText()));
+                ((JProgressBar)temp).setMaximum(Integer.parseInt(max.getText()));
+                ((JProgressBar)temp).setValue(Integer.parseInt(value.getText()));
+
+                Interface.center.setVisible(false);
+
+                Interface.center.remove(preview);
+                Center_panel.list_bar.add(temp);
+                Center_panel.bar_names.add(variable_name.getText());
+                Interface.center.add(Center_panel.list_bar.getLast());
+
+                Interface.center.setVisible(true);
+
+            }
+            else if(type.equals("checkbox")){
+                
+                JCheckBox temp = new JCheckBox();
+                
+                temp.setBounds(((JCheckBox)preview).getBounds());
+                
+                temp.setBackground(content_background_color.getBackground());
+                temp.setForeground(content_foreground_color.getBackground());
+                temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                ((JCheckBox)temp).setHorizontalAlignment(JCheckBox.CENTER);
+                ((JCheckBox)temp).setText(text.getText());
+
+                if(opaque.isSelected()){temp.setOpaque(true);}
+                else{temp.setOpaque(false);temp.setBackground(new Color(0,0,0,64));}
+
+                if(checked.isSelected()){((JCheckBox)temp).setSelected(true);}
+                else{((JCheckBox)temp).setSelected(true);}
+
+                Interface.center.setVisible(false);
+
+                Interface.center.remove(preview);
+                Center_panel.list_checkbox.add(temp);
+                Center_panel.checkbox_names.add(variable_name.getText());
+                Interface.center.add(Center_panel.list_checkbox.getLast());
+
+                Interface.center.setVisible(true);
+
+            }
             
             type="null";
             add_item.setVisible(false);
