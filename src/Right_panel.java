@@ -190,6 +190,7 @@ public class Right_panel extends JFrame implements ActionListener{
 
         right.setOpaque(true);
         right.setBackground(new Color(32,32,32));
+
         return right;
         
     }
@@ -1413,6 +1414,9 @@ public class Right_panel extends JFrame implements ActionListener{
                 Interface.center.add(Center_panel.list_label.getLast());
                 Interface.center.setVisible(true);
             
+                Left_panel.implemented_items.add(new Item(temp,"JLABEL",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                Left_panel.update_rectangles();
+
             }
             else if(type.equals("textfield")){
                 
@@ -1445,6 +1449,9 @@ public class Right_panel extends JFrame implements ActionListener{
 
                 Interface.center.setVisible(true);
 
+                Left_panel.implemented_items.add(new Item(temp,"JTEXTFIELD",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                Left_panel.update_rectangles();
+
             }
             else if(type.equals("passwordfield")){
                 
@@ -1472,6 +1479,9 @@ public class Right_panel extends JFrame implements ActionListener{
                 Interface.center.add(Center_panel.list_passwordfield.getLast());
 
                 Interface.center.setVisible(true);
+
+                Left_panel.implemented_items.add(new Item(temp,"JPASSWORDFIELD",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                Left_panel.update_rectangles();
 
             }
             else if(type.equals("textarea")){
@@ -1503,6 +1513,9 @@ public class Right_panel extends JFrame implements ActionListener{
 
                 Interface.center.setVisible(true);
 
+                Left_panel.implemented_items.add(new Item(temp,"JTEXTAREA",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                Left_panel.update_rectangles();
+
             }
             else if(type.equals("scrollpane")){
 
@@ -1528,6 +1541,9 @@ public class Right_panel extends JFrame implements ActionListener{
                 Interface.center.add(Center_panel.list_button.getLast());
 
                 Interface.center.setVisible(true);
+
+                Left_panel.implemented_items.add(new Item(temp,"JBUTTON",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                Left_panel.update_rectangles();
 
             }
             else if(type.equals("combobox")){
@@ -1570,6 +1586,9 @@ public class Right_panel extends JFrame implements ActionListener{
 
                 Interface.center.setVisible(true);
 
+                Left_panel.implemented_items.add(new Item(temp,"JCOMBOBOX",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                Left_panel.update_rectangles();
+
             }
             else if(type.equals("radiobutton")){
                 
@@ -1606,6 +1625,9 @@ public class Right_panel extends JFrame implements ActionListener{
                 Interface.center.add(Center_panel.list_image.getLast());
                 Interface.center.setVisible(true);
 
+                Left_panel.implemented_items.add(new Item(temp,"IMAGE",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                Left_panel.update_rectangles();
+
             }
             else if(type.equals("bar")){
                 
@@ -1629,6 +1651,9 @@ public class Right_panel extends JFrame implements ActionListener{
                 Interface.center.add(Center_panel.list_bar.getLast());
 
                 Interface.center.setVisible(true);
+
+                Left_panel.implemented_items.add(new Item(temp,"JPROGRESSBAR",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                Left_panel.update_rectangles();
 
             }
             else if(type.equals("checkbox")){
@@ -1659,6 +1684,9 @@ public class Right_panel extends JFrame implements ActionListener{
 
                 Interface.center.setVisible(true);
 
+                Left_panel.implemented_items.add(new Item(temp,"JCHECKBOX",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                Left_panel.update_rectangles();
+
             }
             
             type="null";
@@ -1666,6 +1694,9 @@ public class Right_panel extends JFrame implements ActionListener{
             preview_item.setVisible(false);
             details.removeAll();
             details.setVisible(false);
+
+            Left_panel.first_index=0;
+
         }
 
     }

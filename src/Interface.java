@@ -24,9 +24,6 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         //PRIORIDADE
         //MENOR
                 
-        // box=new JComboBox(new String[]{"itens","da","combobox","estão","aqui"});
-        // Toolbox.implementa_combobox(box,il,200,55,150,20,3,0,panelPRINCIPAL);
-
         //IMPLEMENTA MENUBAR
         String[] princ = {"OP1","OP2","OP3"};
         List<String[]> sec = new ArrayList<String[]>();
@@ -47,8 +44,9 @@ public class Interface extends JFrame implements ActionListener,KeyListener{
         // menubar.add(OP2);
         // framePRINCIPAL.setJMenuBar(menubar);
 
-        JPanel lp = Left_panel.return_Left_panel(LARGURA_PANEL_JFRAME,ALTURA_PANEL_JFRAME);
-        Toolbox.implementa_panel_no_panel(lp,main_screen_panel,0,0,LARGURA_PANEL_JFRAME/5,ALTURA_PANEL_JFRAME);
+        Left_panel lp = new Left_panel();
+        JPanel left = lp.return_Left_panel(LARGURA_PANEL_JFRAME,ALTURA_PANEL_JFRAME);
+        Toolbox.implementa_panel_no_panel(left,main_screen_panel,0,0,LARGURA_PANEL_JFRAME/5,ALTURA_PANEL_JFRAME);
         
         JLabel upside_line = new JLabel();
         Toolbox.implementa_label(upside_line,"",false,LARGURA_PANEL_JFRAME/5,ALTURA_PANEL_JFRAME/4-20,LARGURA_PANEL_JFRAME/2,20,main_screen_panel);

@@ -142,11 +142,10 @@ public class Toolbox{
 
     }
 
-    public static void edita_textarea(JTextArea nome_textarea, Font f, Color back, Color fore, MouseListener ml){
+    public static void edita_textarea(JTextArea nome_textarea, Font f, Color back, Color fore){
         if(f!=null){nome_textarea.setFont(f);}
         if(back!=null){nome_textarea.setBackground(back);}
         if(fore!=null){nome_textarea.setForeground(fore);}
-        if(ml!=null){nome_textarea.addMouseListener(ml);}
     }
 
     public static void implementa_scrollpane(JTextArea nome_textarea, JFrame frame_do_scroll, String texto_scrollpane, int linhas, int colunas, int x, int y, int largura, int altura){
