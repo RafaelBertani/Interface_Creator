@@ -84,6 +84,74 @@ public class Left_panel extends JFrame implements ActionListener{
 
     }
 
+    public static void delete_item_from_lists(int index){
+        String variable_name = implemented_items.get(index).variable_name;
+        String type = implemented_items.get(index).type;
+        if(type.equals("JLABEL")){
+            int i = Center_panel.label_names.indexOf(variable_name);
+            Center_panel.list_label.remove(i);
+            Center_panel.label_names.remove(i);
+        }
+        else if(type.equals("JTEXTFIELD")){
+            int i = Center_panel.textfield_names.indexOf(variable_name);
+            Center_panel.list_textfield.remove(i);
+            Center_panel.textfield_names.remove(i);
+        }
+        else if(type.equals("JPASSWORDFIELD")){
+            int i = Center_panel.passwordfield_names.indexOf(variable_name);
+            Center_panel.list_passwordfield.remove(i);
+            Center_panel.passwordfield_names.remove(i);
+        }
+        else if(type.equals("JTEXTAREA")){
+            int i = Center_panel.textarea_names.indexOf(variable_name);
+            Center_panel.list_textarea.remove(i);
+            Center_panel.textarea_names.remove(i);
+        }
+        else if(type.equals("JSCROLLPANE")){
+            int i = Center_panel.scrollpane_names.indexOf(variable_name);
+            Center_panel.list_scrollpane.remove(i);
+            Center_panel.scrollpane_names.remove(i);
+        }
+        else if(type.equals("JBUTTON")){
+            int i = Center_panel.button_names.indexOf(variable_name);
+            Center_panel.list_button.remove(i);
+            Center_panel.button_names.remove(i);
+        }
+        else if(type.equals("JCOMBOBOX")){
+            int i = Center_panel.combobox_names.indexOf(variable_name);
+            Center_panel.list_combobox.remove(i);
+            Center_panel.combobox_names.remove(i);
+        }
+        else if(type.equals("JRADIOBUTTON")){
+            int i = Center_panel.radiobutton_names.indexOf(variable_name);
+            Center_panel.list_radiobutton.remove(i);
+            Center_panel.radiobutton_names.remove(i);
+            //percorrer todos os radiobuttons para conferir se um buttongroup pode ser excluído porque todos os radiobuttons de um buttongroup já foram excluídos
+        }
+        else if(type.equals("JTABLE")){
+            int i = Center_panel.table_names.indexOf(variable_name);
+            Center_panel.list_table.remove(i);
+            Center_panel.table_names.remove(i);
+        }
+        else if(type.equals("IMAGE")){
+            int i = Center_panel.image_names.indexOf(variable_name);
+            Center_panel.list_image.remove(i);
+            Center_panel.image_names.remove(i);
+            Center_panel.list_sources.remove(i);
+            Center_panel.sources_names.remove(i);
+        }
+        else if(type.equals("JPROGRESSBAR")){
+            int i = Center_panel.bar_names.indexOf(variable_name);
+            Center_panel.list_bar.remove(i);
+            Center_panel.bar_names.remove(i);
+        }
+        else if(type.equals("JCHECKBOX")){
+            int i = Center_panel.checkbox_names.indexOf(variable_name);
+            Center_panel.list_checkbox.remove(i);
+            Center_panel.checkbox_names.remove(i);
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==generate_code){
@@ -128,6 +196,7 @@ public class Left_panel extends JFrame implements ActionListener{
             Interface.center.setVisible(false);
             Interface.center.remove(implemented_items.get(0+first_index).component);
             Interface.center.setVisible(true);
+            delete_item_from_lists(0+first_index);
             implemented_items.remove(0+first_index);
             update_rectangles();
         }
@@ -136,6 +205,7 @@ public class Left_panel extends JFrame implements ActionListener{
             Interface.center.setVisible(false);
             Interface.center.remove(implemented_items.get(1+first_index).component);
             Interface.center.setVisible(true);
+            delete_item_from_lists(1+first_index);
             implemented_items.remove(1+first_index);
             update_rectangles();
         }
@@ -144,6 +214,7 @@ public class Left_panel extends JFrame implements ActionListener{
             Interface.center.setVisible(false);
             Interface.center.remove(implemented_items.get(2+first_index).component);
             Interface.center.setVisible(true);
+            delete_item_from_lists(2+first_index);
             implemented_items.remove(2+first_index);
             update_rectangles();            
         }
@@ -152,6 +223,7 @@ public class Left_panel extends JFrame implements ActionListener{
             Interface.center.setVisible(false);
             Interface.center.remove(implemented_items.get(3+first_index).component);
             Interface.center.setVisible(true);
+            delete_item_from_lists(3+first_index);
             implemented_items.remove(3+first_index);
             update_rectangles();
         }
@@ -160,6 +232,7 @@ public class Left_panel extends JFrame implements ActionListener{
             Interface.center.setVisible(false);
             Interface.center.remove(implemented_items.get(4+first_index).component);
             Interface.center.setVisible(true);
+            delete_item_from_lists(4+first_index);
             implemented_items.remove(4+first_index);
             update_rectangles();
         }
@@ -168,6 +241,7 @@ public class Left_panel extends JFrame implements ActionListener{
             Interface.center.setVisible(false);
             Interface.center.remove(implemented_items.get(5+first_index).component);
             Interface.center.setVisible(true);
+            delete_item_from_lists(5+first_index);
             implemented_items.remove(5+first_index);
             update_rectangles();
         }
@@ -175,6 +249,7 @@ public class Left_panel extends JFrame implements ActionListener{
             rectangles[6].setText("");
             Interface.center.remove(implemented_items.get(6+first_index).component);
             Interface.center.setVisible(true);
+            delete_item_from_lists(6+first_index);
             implemented_items.remove(6+first_index);
             update_rectangles();
         }
@@ -183,6 +258,7 @@ public class Left_panel extends JFrame implements ActionListener{
             Interface.center.setVisible(false);
             Interface.center.remove(implemented_items.get(7+first_index).component);
             Interface.center.setVisible(true);
+            delete_item_from_lists(7+first_index);
             implemented_items.remove(7+first_index);
             update_rectangles();
         }
@@ -191,6 +267,7 @@ public class Left_panel extends JFrame implements ActionListener{
             Interface.center.setVisible(false);
             Interface.center.remove(implemented_items.get(8+first_index).component);
             Interface.center.setVisible(true);
+            delete_item_from_lists(8+first_index);
             implemented_items.remove(8+first_index);
             update_rectangles();
         }
@@ -199,6 +276,7 @@ public class Left_panel extends JFrame implements ActionListener{
             Interface.center.setVisible(false);
             Interface.center.remove(implemented_items.get(9+first_index).component);
             Interface.center.setVisible(true);
+            delete_item_from_lists(9+first_index);
             implemented_items.remove(9+first_index);
             update_rectangles();
         }
@@ -207,6 +285,7 @@ public class Left_panel extends JFrame implements ActionListener{
             Interface.center.setVisible(false);
             Interface.center.remove(implemented_items.get(10+first_index).component);
             Interface.center.setVisible(true);
+            delete_item_from_lists(10+first_index);
             implemented_items.remove(10+first_index);
             update_rectangles();
         }
@@ -215,6 +294,7 @@ public class Left_panel extends JFrame implements ActionListener{
             Interface.center.setVisible(false);
             Interface.center.remove(implemented_items.get(11+first_index).component);
             Interface.center.setVisible(true);
+            delete_item_from_lists(11+first_index);
             implemented_items.remove(11+first_index);
             update_rectangles();
         }

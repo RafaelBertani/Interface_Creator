@@ -6,6 +6,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
@@ -28,7 +29,7 @@ public class Center_panel extends JFrame{
     public static ArrayList<JTextArea> list_textarea = new ArrayList<JTextArea>();
     public static ArrayList<String> textarea_names = new ArrayList<String>();
     
-    public static ArrayList<JScrollPane> list_scrollpane = new ArrayList<JScrollPane>();
+    public static ArrayList<JPanel> list_scrollpane = new ArrayList<JPanel>();
     public static ArrayList<String> scrollpane_names = new ArrayList<String>();
     
     public static ArrayList<JButton> list_button = new ArrayList<JButton>();
@@ -39,16 +40,14 @@ public class Center_panel extends JFrame{
     
     public static ArrayList<JRadioButton> list_radiobutton = new ArrayList<JRadioButton>();
     public static ArrayList<String> radiobutton_names = new ArrayList<String>();
-    
-    public static ArrayList<ButtonGroup> list_buttongroup = new ArrayList<ButtonGroup>();
+    //public static ArrayList<ButtonGroup> list_buttongroup = new ArrayList<ButtonGroup>();
     public static ArrayList<String> buttongroup_names = new ArrayList<String>();
     
-    public static ArrayList<JTable> list_table = new ArrayList<JTable>();
+    public static ArrayList<JLabel> list_table = new ArrayList<JLabel>();
     public static ArrayList<String> table_names = new ArrayList<String>();
     
     public static ArrayList<JLabel> list_image = new ArrayList<JLabel>();
     public static ArrayList<String> image_names = new ArrayList<String>();
-    
     public static ArrayList<String> list_sources = new ArrayList<String>();
     public static ArrayList<String> sources_names = new ArrayList<String>();
     
