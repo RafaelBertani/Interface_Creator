@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -32,19 +33,19 @@ public class Left_panel extends JFrame implements ActionListener{
         Left_panel.PANEL_HEIGHT=PANEL_HEIGHT;
 
         JLabel title = new JLabel();
-        Toolbox.implementa_label(title,"Implemented items:",false,0,0,Left_panel.PANEL_WIDTH/5,Left_panel.PANEL_HEIGHT/20,left);
-        Toolbox.edita_label(title,new Font("Dialog",Font.PLAIN,16),null,Color.WHITE);
+        Toolbox.implements_label(title,"Implemented items:",false,0,0,Left_panel.PANEL_WIDTH/5,Left_panel.PANEL_HEIGHT/20,left);
+        Toolbox.edit_label(title,new Font("Dialog",Font.PLAIN,16),null,Color.WHITE);
 
-        Toolbox.implementa_button(generate_code,"Generate Code",5,Left_panel.PANEL_HEIGHT-Left_panel.PANEL_HEIGHT/6,Left_panel.PANEL_WIDTH/5-10,Left_panel.PANEL_HEIGHT/20,left);
-        Toolbox.edita_button(generate_code,new Font("Dialog",Font.PLAIN,16),new Color(0,64,0),Color.WHITE);
+        Toolbox.implements_button(generate_code,"Generate Code",5,Left_panel.PANEL_HEIGHT-Left_panel.PANEL_HEIGHT/6,Left_panel.PANEL_WIDTH/5-10,Left_panel.PANEL_HEIGHT/20,left);
+        Toolbox.edit_button(generate_code,new Font("Dialog",Font.PLAIN,16),new Color(0,64,0),Color.WHITE);
         generate_code.addActionListener(this);
 
-        Toolbox.implementa_button(up,"Scroll up",5,Left_panel.PANEL_HEIGHT/20,Left_panel.PANEL_WIDTH/5-10,Left_panel.PANEL_HEIGHT/30,left);
-        Toolbox.edita_button(up,new Font("Dialog",Font.PLAIN,16),new Color(64,64,64),Color.WHITE);
+        Toolbox.implements_button(up,"Scroll up",5,Left_panel.PANEL_HEIGHT/20,Left_panel.PANEL_WIDTH/5-10,Left_panel.PANEL_HEIGHT/30,left);
+        Toolbox.edit_button(up,new Font("Dialog",Font.PLAIN,16),new Color(64,64,64),Color.WHITE);
         up.addActionListener(this);
 
-        Toolbox.implementa_button(down,"Scroll down",5,Left_panel.PANEL_HEIGHT-Left_panel.PANEL_HEIGHT/5-Left_panel.PANEL_HEIGHT/35,Left_panel.PANEL_WIDTH/5-10,Left_panel.PANEL_HEIGHT/30,left);
-        Toolbox.edita_button(down,new Font("Dialog",Font.PLAIN,16),new Color(64,64,64),Color.WHITE);
+        Toolbox.implements_button(down,"Scroll down",5,Left_panel.PANEL_HEIGHT-Left_panel.PANEL_HEIGHT/5-Left_panel.PANEL_HEIGHT/35,Left_panel.PANEL_WIDTH/5-10,Left_panel.PANEL_HEIGHT/30,left);
+        Toolbox.edit_button(down,new Font("Dialog",Font.PLAIN,16),new Color(64,64,64),Color.WHITE);
         down.addActionListener(this);
 
         left.setOpaque(true);
@@ -53,10 +54,10 @@ public class Left_panel extends JFrame implements ActionListener{
         for(int i=0;i<12;i++){
             rectangles[i]=new JTextArea();
             deletes[i]=new JButton();
-            Toolbox.implementa_textarea(rectangles[i],"",5,Left_panel.PANEL_HEIGHT/10+i*PANEL_HEIGHT/20+i*PANEL_HEIGHT/200-2,Left_panel.PANEL_WIDTH/5-Left_panel.PANEL_WIDTH/40-10,PANEL_HEIGHT/20,false,true,left);
-            Toolbox.edita_textarea(rectangles[i],new Font("Dialog",Font.PLAIN,16),new Color(0,0,128),Color.WHITE);
-            Toolbox.implementa_button(deletes[i],"X",Left_panel.PANEL_WIDTH/5-Left_panel.PANEL_WIDTH/40-5,Left_panel.PANEL_HEIGHT/10+i*PANEL_HEIGHT/20+i*PANEL_HEIGHT/200-1,Left_panel.PANEL_WIDTH/40,PANEL_HEIGHT/20,left);
-            Toolbox.edita_button(deletes[i],new Font("Dialog",Font.PLAIN,16),new Color(128,0,0),Color.WHITE);
+            Toolbox.implements_textarea(rectangles[i],"",5,Left_panel.PANEL_HEIGHT/10+i*PANEL_HEIGHT/20+i*PANEL_HEIGHT/200-2,Left_panel.PANEL_WIDTH/5-Left_panel.PANEL_WIDTH/40-10,PANEL_HEIGHT/20,false,true,left);
+            Toolbox.edit_textarea(rectangles[i],new Font("Dialog",Font.PLAIN,16),new Color(0,0,128),Color.WHITE);
+            Toolbox.implements_button(deletes[i],"X",Left_panel.PANEL_WIDTH/5-Left_panel.PANEL_WIDTH/40-5,Left_panel.PANEL_HEIGHT/10+i*PANEL_HEIGHT/20+i*PANEL_HEIGHT/200-1,Left_panel.PANEL_WIDTH/40,PANEL_HEIGHT/20,left);
+            Toolbox.edit_button(deletes[i],new Font("Dialog",Font.PLAIN,16),new Color(128,0,0),Color.WHITE);
             deletes[i].setBorder(null);
             deletes[i].addActionListener(this);
             rectangles[i].setVisible(false);
@@ -155,7 +156,15 @@ public class Left_panel extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==generate_code){
-
+            if(Right_panel.panel_name_textfield.getText().length()==0){
+                Toolbox.error_message("Type a variable name for the panel.","Empty panel name.");
+            }
+            else if(Character.isDigit(Right_panel.panel_name_textfield.getText().charAt(0))){
+                Toolbox.error_message("The first character on a variable name must be a letter.","Digit found in the first character of the panel name.");
+            }
+            else{
+                Generate.generate();
+            }
         }
         else if(e.getSource()==up){
             if(first_index>0){

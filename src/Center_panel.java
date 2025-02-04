@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -10,8 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -31,6 +27,8 @@ public class Center_panel extends JFrame{
     
     public static ArrayList<JPanel> list_scrollpane = new ArrayList<JPanel>();
     public static ArrayList<String> scrollpane_names = new ArrayList<String>();
+    public static ArrayList<JTextArea> list_scrollpane_textarea = new ArrayList<JTextArea>();
+    //public static ArrayList<String> scrollpane_textareas_names = new ArrayList<String>();
     
     public static ArrayList<JButton> list_button = new ArrayList<JButton>();
     public static ArrayList<String> button_names = new ArrayList<String>();
