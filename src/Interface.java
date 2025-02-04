@@ -3,12 +3,10 @@ import java.awt.*;
 
 public class Interface extends JFrame{
 
-    //UM MONITOR
     public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     public static final int WIDTH = (int) screenSize.getWidth();
     public static final int HEIGHT = (int) screenSize.getHeight();
 
-    //PRINCIPAL
     private JFrame main_screen_frame = new JFrame();
     private JPanel main_screen_panel = new JPanel();
     

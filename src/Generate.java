@@ -1,9 +1,7 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -18,28 +16,11 @@ import javax.swing.JTextField;
 
 public class Generate{    
     
-    public static int cria_arquivo(String caminho,String nome){
+    public static int write_file(String path_plus_name, List<String> lines){
         try{
-            File f = new File(caminho+"/"+nome+".txt");
-            if(f.createNewFile()){
-                System.out.println("Created file");
-                return 1;
-            }
-            else{
-                System.out.println("File already exists");
-                return 0;
-            }    
-        }catch(Exception e){
-            e.printStackTrace();
-            return -1;
-        }
-    }
-
-    public static int escreve_no_arquivo(String caminho_mais_nome, List<String> linhas){
-        try{
-            FileWriter myWriter = new FileWriter(caminho_mais_nome);
-            for(String linha : linhas){
-                myWriter.write(linha);
+            FileWriter myWriter = new FileWriter(path_plus_name);
+            for(String line : lines){
+                myWriter.write(line);
                 myWriter.write("\n");
             }
             myWriter.close();
@@ -48,56 +29,6 @@ public class Generate{
             e.printStackTrace();
             return 0;
         }
-    }
-
-    public static int adiciona_no_arquivo(String caminho_mais_nome, List<String> linhas){
-        try{
-
-            File myObj = new File(caminho_mais_nome);
-            Scanner myReader = new Scanner(myObj);
-            List<String> conteudo = new ArrayList<>();
-            while (myReader.hasNextLine()){conteudo.add(myReader.nextLine());}
-            myReader.close();
-
-            FileWriter myWriter = new FileWriter(caminho_mais_nome);
-            for(String linha : conteudo){
-                myWriter.write(linha);
-                myWriter.write("\n");
-            }
-            for(String linha : linhas){
-                myWriter.write(linha);
-                myWriter.write("\n");
-            }
-            myWriter.close();
-        
-            return 1;
-        
-        }catch(Exception e){
-            e.printStackTrace();
-            return 0;
-        }
-    }
-
-    public static List<String> le_arquivo(String caminho_mais_nome){
-        try{
-            File myObj = new File(caminho_mais_nome);
-            Scanner myReader = new Scanner(myObj);
-            List<String> retorno = new ArrayList<>();
-            while (myReader.hasNextLine()) {
-                retorno.add(myReader.nextLine());
-            }
-            myReader.close();
-            return retorno;
-        }catch(FileNotFoundException e){
-            e.printStackTrace();
-            List<String> retorno = new ArrayList<>();
-            retorno.add("ERRO, NÃO FOI POSSÍVEL LER CONTEÚDO DO ARQUIVO");
-            return retorno;
-        }
-    }
-
-    public static void print_linhas(List<String> linhas_do_arquivo){
-        for(String linha:linhas_do_arquivo){System.out.println(linha);}
     }
 
     public static void generate(){
@@ -595,9 +526,7 @@ public class Generate{
         }
 
         File file = Toolbox.implements_folderchooser("Select folder");
-        System.out.println(file.toString());
-        escreve_no_arquivo(file.toString()+"\\"+Right_panel.panel_name_textfield.getText()+"_panel.java",all_lines);
-        //print_linhas(all_lines);
+        write_file(file.toString()+"\\"+Right_panel.panel_name_textfield.getText()+"_panel.java",all_lines);
 
     }
 

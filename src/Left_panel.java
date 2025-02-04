@@ -127,7 +127,6 @@ public class Left_panel extends JFrame implements ActionListener{
             int i = Center_panel.radiobutton_names.indexOf(variable_name);
             Center_panel.list_radiobutton.remove(i);
             Center_panel.radiobutton_names.remove(i);
-            //percorrer todos os radiobuttons para conferir se um buttongroup pode ser excluído porque todos os radiobuttons de um buttongroup já foram excluídos
         }
         else if(type.equals("JTABLE")){
             int i = Center_panel.table_names.indexOf(variable_name);
