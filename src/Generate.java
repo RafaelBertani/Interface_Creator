@@ -530,6 +530,7 @@ public class Generate{
 
     }
 
+    //check if the string only contains numbers
     public static boolean only_numbers(String str){
         boolean only=true;
         for(int i=0;i<str.length();i++){

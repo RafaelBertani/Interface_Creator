@@ -68,6 +68,7 @@ public class Left_panel extends JFrame implements ActionListener{
 
     }
 
+    //update the display of the items (rectangles) in the left panel (this functions always makes the first 12 be displayed)
     public static void update_rectangles(){
 
         for(int i=0;i<12;i++){
@@ -85,6 +86,7 @@ public class Left_panel extends JFrame implements ActionListener{
 
     }
 
+    //delete a item from the list of items to be displayed in the left panel
     public static void delete_item_from_lists(int index){
         String variable_name = implemented_items.get(index).variable_name;
         String type = implemented_items.get(index).type;
@@ -165,7 +167,7 @@ public class Left_panel extends JFrame implements ActionListener{
                 Generate.generate();
             }
         }
-        else if(e.getSource()==up){
+        else if(e.getSource()==up){ //scroll up item list
             if(first_index>0){
                 first_index--;
                 for(int i=0;i<12;i++){
@@ -182,7 +184,7 @@ public class Left_panel extends JFrame implements ActionListener{
                 }
             }
         }
-        else if(e.getSource()==down){
+        else if(e.getSource()==down){ //scroll down item list
             if(first_index+12<implemented_items.size()){
                 first_index++;
                 for(int i=0;i<12;i++){

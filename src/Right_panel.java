@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.image.BufferedImage;
+
 import java.io.File;
 
 import javax.imageio.ImageIO;
@@ -245,19 +246,24 @@ public class Right_panel extends JFrame implements ActionListener{
     public static JTextField columns_names = new JTextField();
 
     public void restart_detais_panel(){
+
+        //clean the details panel
         details.setVisible(false);
         details.removeAll();
         details.setOpaque(true);
         details.setBackground(new Color(64,64,64));
 
+        //implement the ADD button
         Toolbox.implements_button(add_item,"ADD",2685*PANEL_WIDTH/20000,PANEL_HEIGHT-21*PANEL_HEIGHT/35,2685*PANEL_WIDTH/20000,PANEL_HEIGHT/35,details);
         Toolbox.edit_button(add_item,new Font("Dialog",Font.PLAIN,12),new Color(0,128,0),Color.WHITE);
         add_item.setVisible(true);
 
+        //implement the PREVIEW button
         Toolbox.implements_button(preview_item,"PREVIEW",0,PANEL_HEIGHT-21*PANEL_HEIGHT/35,2685*PANEL_WIDTH/20000,PANEL_HEIGHT/35,details);
         Toolbox.edit_button(preview_item,new Font("Dialog",Font.PLAIN,12),new Color(128,0,0),Color.WHITE);
         preview_item.setVisible(true);
 
+        //set all posible items as invisible
         type_variable_name.setVisible(false);
         variable_name.setVisible(false);
         type_X.setVisible(false);
@@ -304,30 +310,30 @@ public class Right_panel extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e){
-        if(e.getSource()==background_color){
+        if(e.getSource()==background_color){ //background color of the center panel
             Color newColor = JColorChooser.showDialog(null, "Select a color", new Color(238,238,238));
             if(newColor!=null){
                 Interface.center.setBackground(newColor);
                 background_color.setBackground(newColor);
             }
         }
-        else if(e.getSource()==opaque_panel){
+        else if(e.getSource()==opaque_panel){ //opacity of the center panel
             if(opaque_panel.isSelected()){Interface.center.setOpaque(true);}
             else{Interface.center.setOpaque(false);}
         }
-        else if(e.getSource()==content_background_color){
+        else if(e.getSource()==content_background_color){ //background color of the component being created
             Color newColor = JColorChooser.showDialog(null, "Select a color", new Color(238,238,238));
             if(newColor!=null){content_background_color.setBackground(newColor);}
         }
-        else if(e.getSource()==content_foreground_color){
+        else if(e.getSource()==content_foreground_color){ //foreground color of the component being created
             Color newColor = JColorChooser.showDialog(null, "Select a color", new Color(238,238,238));
             if(newColor!=null){content_foreground_color.setBackground(newColor);}
         }
-        else if(e.getSource()==scrollpane_background_color){
+        else if(e.getSource()==scrollpane_background_color){ //background color of the scrollpane of the component being created
             Color newColor = JColorChooser.showDialog(null, "Select a color", new Color(238,238,238));
             if(newColor!=null){scrollpane_background_color.setBackground(newColor);}
         }
-        else if(e.getSource()==add_label){
+        else if(e.getSource()==add_label){ //fill the details panel with label items
             type="label";
             restart_detais_panel();
 
@@ -404,7 +410,7 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.implements_panel_in_a_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
-        else if(e.getSource()==add_textfield){
+        else if(e.getSource()==add_textfield){ //fill the details panel with textfield items
             type="textfield";
             restart_detais_panel();
 
@@ -485,7 +491,7 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.implements_panel_in_a_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
-        else if(e.getSource()==add_passwordfield){
+        else if(e.getSource()==add_passwordfield){ //fill the details panel with passwordfield items
             type="passwordfield";
             restart_detais_panel();
 
@@ -549,7 +555,7 @@ public class Right_panel extends JFrame implements ActionListener{
             details.setVisible(true);
 
         }
-        else if(e.getSource()==add_textarea){
+        else if(e.getSource()==add_textarea){ //fill the details panel with textarea items
             type="textarea";
             restart_detais_panel();
 
@@ -626,7 +632,7 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.implements_panel_in_a_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
-        else if(e.getSource()==add_scrollpane){
+        else if(e.getSource()==add_scrollpane){ //fill the details panel with scrollpane items
             type="scrollpane";
             restart_detais_panel();
 
@@ -724,7 +730,7 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.implements_panel_in_a_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);            
             details.setVisible(true);
         }
-        else if(e.getSource()==add_button){
+        else if(e.getSource()==add_button){ //fill the details panel with button items
             type="button";
             restart_detais_panel();
 
@@ -793,7 +799,7 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.implements_panel_in_a_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
-        else if(e.getSource()==add_combobox){
+        else if(e.getSource()==add_combobox){ //fill the details panel with combobox items
             type="combobox";
             restart_detais_panel();
 
@@ -876,7 +882,7 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.implements_panel_in_a_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
-        else if(e.getSource()==add_radiobutton){
+        else if(e.getSource()==add_radiobutton){ //fill the details panel with radiobutton items
             type="radiobutton";
             restart_detais_panel();
 
@@ -956,7 +962,7 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.implements_panel_in_a_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
-        else if(e.getSource()==add_table){
+        else if(e.getSource()==add_table){ //fill the details panel with table items
             type="table";
             restart_detais_panel();
 
@@ -1005,7 +1011,7 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.implements_panel_in_a_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
-        else if(e.getSource()==add_image){
+        else if(e.getSource()==add_image){ //fill the details panel with image items
             type="image";
             restart_detais_panel();
 
@@ -1054,7 +1060,7 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.implements_panel_in_a_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
-        else if(e.getSource()==add_bar){
+        else if(e.getSource()==add_bar){ //fill the details panel with bar items
             type="bar";
             restart_detais_panel();
 
@@ -1123,7 +1129,7 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.implements_panel_in_a_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
-        else if(e.getSource()==add_checkbox){
+        else if(e.getSource()==add_checkbox){ //fill the details panel with checkbox items
             type="checkbox";
             restart_detais_panel();
 
@@ -1200,9 +1206,10 @@ public class Right_panel extends JFrame implements ActionListener{
             Toolbox.implements_panel_in_a_panel(details,right,15*PANEL_WIDTH/1000,PANEL_HEIGHT/3+2*PANEL_HEIGHT/18,2685*PANEL_WIDTH/10000,PANEL_HEIGHT-20*PANEL_HEIGHT/35);
             details.setVisible(true);
         }
-        else if(e.getSource()==preview_item){
+        else if(e.getSource()==preview_item){ //temporary load and display the 'preview' component
             if(type.equals("label")){
                 
+                //clear the 'preview' component
                 if(preview!=null){
                     Interface.center.setVisible(false);
                     Interface.center.remove(preview);
@@ -1231,6 +1238,7 @@ public class Right_panel extends JFrame implements ActionListener{
                 if(border.isSelected()){preview.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
                 else{preview.setBorder(null);}
 
+                //add the 'preview' component
                 Interface.center.setVisible(false);
                 Interface.center.add(preview);
                 Interface.center.setVisible(true);
@@ -1238,6 +1246,7 @@ public class Right_panel extends JFrame implements ActionListener{
             }
             else if(type.equals("textfield")){
                 
+                //clear the 'preview' component
                 if(preview!=null){
                     Interface.center.setVisible(false);
                     Interface.center.remove(preview);
@@ -1269,6 +1278,7 @@ public class Right_panel extends JFrame implements ActionListener{
                 if(border.isSelected()){preview.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
                 else{preview.setBorder(null);}
                 
+                //add the 'preview' component
                 Interface.center.setVisible(false);
                 Interface.center.add(preview);
                 Interface.center.setVisible(true);
@@ -1276,6 +1286,7 @@ public class Right_panel extends JFrame implements ActionListener{
             }
             else if(type.equals("passwordfield")){
                 
+                //clear the 'preview' component
                 if(preview!=null){
                     Interface.center.setVisible(false);
                     Interface.center.remove(preview);
@@ -1301,6 +1312,8 @@ public class Right_panel extends JFrame implements ActionListener{
                 
                 if(border.isSelected()){preview.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
                 else{preview.setBorder(null);}
+                
+                //add the 'preview' component
                 Interface.center.setVisible(false);
                 Interface.center.add(preview);
                 Interface.center.setVisible(true);
@@ -1308,6 +1321,7 @@ public class Right_panel extends JFrame implements ActionListener{
             }
             else if(type.equals("textarea")){
                 
+                //clear the 'preview' component
                 if(preview!=null){
                     Interface.center.setVisible(false);
                     Interface.center.remove(preview);
@@ -1338,6 +1352,7 @@ public class Right_panel extends JFrame implements ActionListener{
                 
                 preview.setOpaque(true);
 
+                //add the 'preview' component
                 Interface.center.setVisible(false);
                 Interface.center.add(preview);
                 Interface.center.setVisible(true);
@@ -1345,6 +1360,7 @@ public class Right_panel extends JFrame implements ActionListener{
             }
             else if(type.equals("scrollpane")){
 
+                //clear the 'preview' component
                 if(preview!=null){
                     Interface.center.setVisible(false);
                     Interface.center.remove(preview);
@@ -1383,6 +1399,7 @@ public class Right_panel extends JFrame implements ActionListener{
                 if(border.isSelected()){textarea.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
                 else{textarea.setBorder(null);}
                 
+                //add the 'preview' component
                 Interface.center.setVisible(false);
                 preview.add(scrollPane);
                 Interface.center.add(preview);
@@ -1391,6 +1408,7 @@ public class Right_panel extends JFrame implements ActionListener{
             }
             else if(type.equals("button")){
                 
+                //clear the 'preview' component
                 if(preview!=null){
                     Interface.center.setVisible(false);
                     Interface.center.remove(preview);
@@ -1413,6 +1431,7 @@ public class Right_panel extends JFrame implements ActionListener{
                 ((JButton)preview).setHorizontalAlignment(JLabel.CENTER);
                 ((JButton)preview).setText(text.getText());
 
+                //add the 'preview' component
                 Interface.center.setVisible(false);
                 Interface.center.add(preview);
                 Interface.center.setVisible(true);
@@ -1420,6 +1439,7 @@ public class Right_panel extends JFrame implements ActionListener{
             }
             else if(type.equals("combobox")){
                 
+                //clear the 'preview' component
                 if(preview!=null){
                     Interface.center.setVisible(false);
                     Interface.center.remove(preview);
@@ -1462,6 +1482,7 @@ public class Right_panel extends JFrame implements ActionListener{
                 dlcr.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
                 ((JComboBox<String>)preview).setRenderer(dlcr);
 
+                //add the 'preview' component
                 Interface.center.setVisible(false);
                 Interface.center.add(preview);
                 Interface.center.setVisible(true);
@@ -1469,6 +1490,7 @@ public class Right_panel extends JFrame implements ActionListener{
             }
             else if(type.equals("radiobutton")){
                 
+                //clear the 'preview' component
                 if(preview!=null){
                     Interface.center.setVisible(false);
                     Interface.center.remove(preview);
@@ -1494,6 +1516,7 @@ public class Right_panel extends JFrame implements ActionListener{
                 if(opaque.isSelected()){preview.setOpaque(true);}
                 else{preview.setOpaque(false);preview.setBackground(new Color(0,0,0,64));}
                 
+                //add the 'preview' component
                 Interface.center.setVisible(false);
                 Interface.center.add(preview);
                 Interface.center.setVisible(true);
@@ -1504,6 +1527,7 @@ public class Right_panel extends JFrame implements ActionListener{
             }
             else if(type.equals("image")){
 
+                //clear the 'preview' component
                 if(preview!=null){
                     Interface.center.setVisible(false);
                     Interface.center.remove(preview);
@@ -1534,6 +1558,7 @@ public class Right_panel extends JFrame implements ActionListener{
                 }
                 //((JLabel)preview).setIcon(new ImageIcon(link.getText()));
 
+                //add the 'preview' component
                 Interface.center.setVisible(false);
                 Interface.center.add(preview);
                 Interface.center.setVisible(true);
@@ -1541,6 +1566,7 @@ public class Right_panel extends JFrame implements ActionListener{
             }
             else if(type.equals("bar")){
                 
+                //clear the 'preview' component
                 if(preview!=null){
                     Interface.center.setVisible(false);
                     Interface.center.remove(preview);
@@ -1563,6 +1589,7 @@ public class Right_panel extends JFrame implements ActionListener{
                 preview.setBackground(content_background_color.getBackground());
                 preview.setForeground(content_foreground_color.getBackground());
 
+                //add the 'preview' component
                 Interface.center.setVisible(false);
                 Interface.center.add(preview);
                 Interface.center.setVisible(true);
@@ -1570,6 +1597,7 @@ public class Right_panel extends JFrame implements ActionListener{
             }
             else if(type.equals("checkbox")){
 
+                //clear the 'preview' component
                 if(preview!=null){
                     Interface.center.setVisible(false);
                     Interface.center.remove(preview);
@@ -1598,443 +1626,476 @@ public class Right_panel extends JFrame implements ActionListener{
                 if(checked.isSelected()){((JCheckBox)preview).setSelected(true);}
                 else{((JCheckBox)preview).setSelected(true);}
 
+                //add the 'preview' component
                 Interface.center.setVisible(false);
                 Interface.center.add(preview);
                 Interface.center.setVisible(true);   
 
             }
         }
-        else if(e.getSource()==add_item){
+        else if(e.getSource()==add_item){ //add the component to the center panel
+            //check the existence of potencial errors
             if(preview==null){
                 Toolbox.error_message("Click PREVIEW first","PREVIEW NOT CLICKED YET");
             }
-            else{
-                if(variable_name.getText().length()==0){
-                    Toolbox.error_message("Type a variable name.","Empty variable name.");
-                }
-                else if(Character.isDigit(variable_name.getText().charAt(0))){
-                    Toolbox.error_message("The first character on a variable name must be a letter.","Digit found on the first character of the variable name.");
-                }
-                else if(type.equals("scrollpane") && columns.getText().length()==0){
-                    Toolbox.error_message("The amount of columns was not defined.","Type the amount of columns desired.");
-                }
-                else if(type.equals("scrollpane") && rows.getText().length()==0){
-                    Toolbox.error_message("The amount of rows was not defined.","Type the amount of rows desired.");
-                }
-                else if(type.equals("scrollpane") && !Generate.only_numbers(columns.getText())){
-                    Toolbox.error_message("Type only numbers in the columns textfield.","Invalid columns amount.");
-                }
-                else if(type.equals("scrollpane") && !Generate.only_numbers(rows.getText())){
-                    Toolbox.error_message("Type only numbers in the rows textfield.","Invalid rows amount.");
-                }
-                else if(type.equals("combobox") && combobox_initial_item.getText().length()==0){
-                    Toolbox.error_message("The index of the initial item was not defined.","Type the index of the initial item.");
-                }
-                else if(type.equals("combobox") && combobox_combobox_rows_displayed.getText().length()==0){
-                    Toolbox.error_message("The amount of rows displayed at once was not defined.","Type the amount of rows.");
-                }
-                else if(type.equals("combobox") && !Generate.only_numbers(combobox_initial_item.getText())){
-                    Toolbox.error_message("Type only numbers.","Invalid initial item index.");
-                }
-                else if(type.equals("combobox") && !Generate.only_numbers(combobox_combobox_rows_displayed.getText())){
-                    Toolbox.error_message("Type only numbers.","Invalid rows amount.");
-                }
-                else if(type.equals("bar") && value.getText().length()==0){
-                    Toolbox.error_message("The value amount was not defined.","Type the value amount.");
-                }
-                else if(type.equals("bar") && !Generate.only_numbers(value.getText())){
-                    Toolbox.error_message("Type only numbers.","Invalid value amount.");
-                }
-                else if(type.equals("bar") && min.getText().length()==0){
-                    Toolbox.error_message("The min. amount was not defined.","Type the min.");
-                }
-                else if(type.equals("bar") && !Generate.only_numbers(min.getText())){
-                    Toolbox.error_message("Type only numbers.","Invalid min amount.");
-                }
-                else if(type.equals("bar") && max.getText().length()==0){
-                    Toolbox.error_message("The max. amount was not defined.","Type the max. amount.");
-                }
-                else if(type.equals("bar") && !Generate.only_numbers(max.getText())){
-                    Toolbox.error_message("Type only numbers.","Invalid max amount.");
-                }
-                else{
-                    //add
-                    if(type.equals("label")){
-                        
-                        JLabel temp = new JLabel();
-                        
-                        temp.setBounds(((JLabel)preview).getBounds());
-                        
-                        if(opaque.isSelected()){temp.setOpaque(true);}
-                        else{temp.setOpaque(false);temp.setBackground(new Color(0,0,0,64));}
-
-                        temp.setBackground(content_background_color.getBackground());
-                        temp.setForeground(content_foreground_color.getBackground());
-                        temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
-
-                        ((JLabel)temp).setHorizontalAlignment(JLabel.CENTER);
-                        ((JLabel)temp).setText(text.getText());
-
-                        if(border.isSelected()){temp.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
-                        else{temp.setBorder(null);}
-
-                        Interface.center.setVisible(false);
-                        Interface.center.remove(preview);
-                        Center_panel.list_label.add(temp);
-                        Center_panel.label_names.add(variable_name.getText());
-                        Interface.center.add(Center_panel.list_label.getLast());
-                        Interface.center.setVisible(true);
-                    
-                        Left_panel.implemented_items.add(new Item(temp,"JLABEL",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
-                        Left_panel.update_rectangles();
-
-                    }
-                    else if(type.equals("textfield")){
-                        
-                        JTextField temp = new JTextField();
-                        
-                        temp.setBounds(((JTextField)preview).getBounds());
-                        
-                        if(opaque.isSelected()){temp.setOpaque(true);}
-                        else{temp.setOpaque(false);temp.setBackground(new Color(0,0,0,64));}
-
-                        temp.setBackground(content_background_color.getBackground());
-                        temp.setForeground(content_foreground_color.getBackground());
-                        temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
-
-                        ((JTextField)temp).setHorizontalAlignment(JLabel.CENTER);
-                        ((JTextField)temp).setText(text.getText());
-
-                        if(editable.isSelected()){((JTextField)temp).setEditable(true);}
-                        else{((JTextField)temp).setEditable(false);}
-
-                        if(border.isSelected()){temp.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
-                        else{temp.setBorder(null);}
-
-                        Interface.center.setVisible(false);
-
-                        Interface.center.remove(preview);
-                        Center_panel.list_textfield.add(temp);
-                        Center_panel.textfield_names.add(variable_name.getText());
-                        Interface.center.add(Center_panel.list_textfield.getLast());
-
-                        Interface.center.setVisible(true);
-
-                        Left_panel.implemented_items.add(new Item(temp,"JTEXTFIELD",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
-                        Left_panel.update_rectangles();
-
-                    }
-                    else if(type.equals("passwordfield")){
-                        
-                        JPasswordField temp = new JPasswordField();
-                        
-                        temp.setBounds(((JPasswordField)preview).getBounds());
-                        
-                        temp.setBackground(content_background_color.getBackground());
-                        temp.setForeground(content_foreground_color.getBackground());
-                        temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
-
-                        ((JPasswordField)temp).setHorizontalAlignment(JLabel.CENTER);
-
-                        if(opaque.isSelected()){temp.setOpaque(true);}
-                        else{temp.setOpaque(false);temp.setBackground(new Color(0,0,0,64));}
-
-                        if(border.isSelected()){temp.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
-                        else{temp.setBorder(null);}
-
-                        Interface.center.setVisible(false);
-
-                        Interface.center.remove(preview);
-                        Center_panel.list_passwordfield.add(temp);
-                        Center_panel.passwordfield_names.add(variable_name.getText());
-                        Interface.center.add(Center_panel.list_passwordfield.getLast());
-
-                        Interface.center.setVisible(true);
-
-                        Left_panel.implemented_items.add(new Item(temp,"JPASSWORDFIELD",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
-                        Left_panel.update_rectangles();
-
-                    }
-                    else if(type.equals("textarea")){
-                        
-                        JTextArea temp = new JTextArea();
-                        
-                        temp.setBounds(((JTextArea)preview).getBounds());
-                        
-                        temp.setBackground(content_background_color.getBackground());
-                        temp.setForeground(content_foreground_color.getBackground());
-                        temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
-
-                        ((JTextArea)temp).setText(text.getText());
-
-                        if(editable.isSelected()){((JTextArea)temp).setEditable(true);}
-                        else{((JTextArea)temp).setEditable(false);}
-
-                        if(border.isSelected()){temp.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
-                        else{temp.setBorder(null);}
-
-                        preview.setOpaque(true);
-
-                        Interface.center.setVisible(false);
-
-                        Interface.center.remove(preview);
-                        Center_panel.list_textarea.add(temp);
-                        Center_panel.textarea_names.add(variable_name.getText());
-                        Interface.center.add(Center_panel.list_textarea.getLast());
-
-                        Interface.center.setVisible(true);
-
-                        Left_panel.implemented_items.add(new Item(temp,"JTEXTAREA",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
-                        Left_panel.update_rectangles();
-
-                    }
-                    else if(type.equals("scrollpane")){
-                        
-                        JPanel temp = new JPanel();
-                        
-                        JTextArea textarea = new JTextArea();
-                        JScrollPane scrollPane = new JScrollPane(textarea);
-                        
-                        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
-                        temp.setBounds(preview.getBounds());
-
-                        ((JTextArea)textarea).setRows(Integer.parseInt(rows.getText()));
-                        ((JTextArea)textarea).setColumns(Integer.parseInt(columns.getText()));
-                        
-                        textarea.setBackground(content_background_color.getBackground());
-                        textarea.setForeground(content_foreground_color.getBackground());
-                        textarea.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
-                    
-                        ((JTextArea)textarea).setText(text.getText());
-                        
-                        if(opaque.isSelected()){textarea.setOpaque(true);temp.setBackground(scrollpane_background_color.getBackground());}
-                        else{textarea.setOpaque(false);temp.setBackground(new Color(0,0,0,0));}
-
-                        if(editable.isSelected()){((JTextArea)textarea).setEditable(true);}
-                        else{((JTextArea)textarea).setEditable(false);}
-
-                        if(border.isSelected()){textarea.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
-                        else{textarea.setBorder(null);}
-
-                        temp.add(scrollPane);
-
-                        Interface.center.setVisible(false);
-
-                        Interface.center.remove(preview);
-                        Center_panel.list_scrollpane.add(temp);
-                        Center_panel.scrollpane_names.add(variable_name.getText());
-                        Center_panel.list_scrollpane_textarea.add(textarea);
-                        Interface.center.add(Center_panel.list_scrollpane.getLast());
-
-                        Interface.center.setVisible(true);
-
-                        Left_panel.implemented_items.add(new Item(temp,"JSCROLLPANE",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
-                        Left_panel.update_rectangles();
-
-                    }
-                    else if(type.equals("button")){
-                        
-                        JButton temp = new JButton();
-                        
-                        temp.setBounds(((JButton)preview).getBounds());
-                        
-                        temp.setBackground(content_background_color.getBackground());
-                        temp.setForeground(content_foreground_color.getBackground());
-                        temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
-
-                        ((JButton)temp).setHorizontalAlignment(JLabel.CENTER);
-                        ((JButton)temp).setText(text.getText());
-
-                        Interface.center.setVisible(false);
-
-                        Interface.center.remove(preview);
-                        Center_panel.list_button.add(temp);
-                        Center_panel.button_names.add(variable_name.getText());
-                        Interface.center.add(Center_panel.list_button.getLast());
-
-                        Interface.center.setVisible(true);
-
-                        Left_panel.implemented_items.add(new Item(temp,"JBUTTON",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
-                        Left_panel.update_rectangles();
-
-                    }
-                    else if(type.equals("combobox")){
-                        
-                        //add items
-                        int n_of_items = 0;
-                        for(int i=0;i<combobox_items.getText().length();i++){if(combobox_items.getText().charAt(i)==','){n_of_items++;}}
-                        String[] items = new String[n_of_items+1];
-                        String item = "";
-                        int count = 0;
-                        for(int i=0;i<combobox_items.getText().length();i++){
-                            if(combobox_items.getText().charAt(i)!=','){item+=combobox_items.getText().charAt(i);}
-                            else{items[count]=item;item="";count++;}
-                        }
-                        items[count]=item;
-                        
-                        JComboBox<String> temp = new JComboBox<String>(items);
-                        
-                        temp.setBounds(((JComboBox<String>)preview).getBounds());
-                        
-                        temp.setBackground(content_background_color.getBackground());
-                        temp.setForeground(content_foreground_color.getBackground());
-                        temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
-
-                        ((JComboBox<String>)temp).setAlignmentX(JComboBox.CENTER_ALIGNMENT);
-                        ((JComboBox<String>)temp).setMaximumRowCount(Integer.parseInt(combobox_combobox_rows_displayed.getText()));
-                        ((JComboBox<String>)temp).setSelectedIndex(Integer.parseInt(combobox_initial_item.getText()));
-
-                        //centralize the items
-                        DefaultListCellRenderer dlcr = new DefaultListCellRenderer();
-                        dlcr.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
-                        ((JComboBox<String>)temp).setRenderer(dlcr);
-
-                        Interface.center.setVisible(false);
-
-                        Interface.center.remove(preview);
-                        Center_panel.list_combobox.add(temp);
-                        Center_panel.combobox_names.add(variable_name.getText());
-                        Interface.center.add(Center_panel.list_combobox.getLast());
-
-                        Interface.center.setVisible(true);
-
-                        Left_panel.implemented_items.add(new Item(temp,"JCOMBOBOX",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
-                        Left_panel.update_rectangles();
-
-                    }
-                    else if(type.equals("radiobutton")){
-                        
-                        JRadioButton temp = new JRadioButton();
-                        
-                        temp.setBounds(((JRadioButton)preview).getBounds());
-                        
-                        temp.setBackground(content_background_color.getBackground());
-                        temp.setForeground(content_foreground_color.getBackground());
-                        temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
-
-                        ((JRadioButton)temp).setHorizontalAlignment(JRadioButton.CENTER);
-                        ((JRadioButton)temp).setText(text.getText());
-
-                        Interface.center.setVisible(false);
-
-                        Interface.center.remove(preview);
-                        Center_panel.list_radiobutton.add(temp);
-                        Center_panel.radiobutton_names.add(variable_name.getText());
-                        Center_panel.buttongroup_names.add(button_group.getText());
-                        Interface.center.add(Center_panel.list_radiobutton.getLast());
-
-                        Interface.center.setVisible(true);
-
-                        Left_panel.implemented_items.add(new Item(temp,"JRADIOBUTTON",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
-                        Left_panel.update_rectangles();
-
-                    }
-                    else if(type.equals("table")){
-                        //type: JTABLE
-                    }
-                    else if(type.equals("image")){
-                        
-                        JLabel temp = new JLabel();
-                        
-                        temp.setBounds(((JLabel)preview).getBounds());
-
-                        //temporary resize for the center panel
-                        try {
-                            BufferedImage originalImage = ImageIO.read(new File(link.getText()));
-
-                            BufferedImage resizedImage = new BufferedImage(originalImage.getWidth()/2,originalImage.getHeight()/2,BufferedImage.TYPE_INT_RGB);
-                            Graphics2D graphics2d = resizedImage.createGraphics();
-                    
-                            graphics2d.drawImage(originalImage,0,0,originalImage.getWidth()/2,originalImage.getHeight()/2,null);
-                            graphics2d.dispose();
-                            ((JLabel)temp).setIcon(new ImageIcon((Image)resizedImage));
-                        } catch (Exception exception_resized) {
-                            exception_resized.printStackTrace();
-                        }
-                        //((JLabel)temp).setIcon(new ImageIcon(link.getText()));       
-
-                        Interface.center.setVisible(false);
-                        Interface.center.remove(preview);
-                        Center_panel.list_image.add(temp);
-                        Center_panel.image_names.add(variable_name.getText());
-                        Center_panel.sources_names.add(link.getText());
-                        Interface.center.add(Center_panel.list_image.getLast());
-                        Interface.center.setVisible(true);
-
-                        Left_panel.implemented_items.add(new Item(temp,"IMAGE",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
-                        Left_panel.update_rectangles();
-
-                    }
-                    else if(type.equals("bar")){
-                        
-                        JProgressBar temp = new JProgressBar();
-                        
-                        temp.setBounds(((JProgressBar)preview).getBounds());
-                        
-                        temp.setBackground(content_background_color.getBackground());
-                        temp.setForeground(content_foreground_color.getBackground());
-                        
-                        ((JProgressBar)temp).setMinimum(Integer.parseInt(min.getText()));
-                        ((JProgressBar)temp).setMaximum(Integer.parseInt(max.getText()));
-                        ((JProgressBar)temp).setValue(Integer.parseInt(value.getText()));
-
-                        Interface.center.setVisible(false);
-
-                        Interface.center.remove(preview);
-                        Center_panel.list_bar.add(temp);
-                        Center_panel.bar_names.add(variable_name.getText());
-                        Interface.center.add(Center_panel.list_bar.getLast());
-
-                        Interface.center.setVisible(true);
-
-                        Left_panel.implemented_items.add(new Item(temp,"JPROGRESSBAR",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
-                        Left_panel.update_rectangles();
-
-                    }
-                    else if(type.equals("checkbox")){
-                        
-                        JCheckBox temp = new JCheckBox();
-                        
-                        temp.setBounds(((JCheckBox)preview).getBounds());
-                        
-                        temp.setBackground(content_background_color.getBackground());
-                        temp.setForeground(content_foreground_color.getBackground());
-                        temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
-
-                        ((JCheckBox)temp).setHorizontalAlignment(JCheckBox.CENTER);
-                        ((JCheckBox)temp).setText(text.getText());
-
-                        if(opaque.isSelected()){temp.setOpaque(true);}
-                        else{temp.setOpaque(false);temp.setBackground(new Color(0,0,0,64));}
-
-                        if(checked.isSelected()){((JCheckBox)temp).setSelected(true);}
-                        else{((JCheckBox)temp).setSelected(true);}
-
-                        Interface.center.setVisible(false);
-
-                        Interface.center.remove(preview);
-                        Center_panel.list_checkbox.add(temp);
-                        Center_panel.checkbox_names.add(variable_name.getText());
-                        Interface.center.add(Center_panel.list_checkbox.getLast());
-
-                        Interface.center.setVisible(true);
-
-                        Left_panel.implemented_items.add(new Item(temp,"JCHECKBOX",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
-                        Left_panel.update_rectangles();
-
-                    }
-                    
-                    type="null";
-                    add_item.setVisible(false);
-                    preview_item.setVisible(false);
-                    details.removeAll();
-                    details.setVisible(false);
-
-                    Left_panel.first_index=0;
-                }
+            else if(variable_name.getText().length()==0){
+                Toolbox.error_message("Type a variable name.","Empty variable name.");
             }
+            else if(Character.isDigit(variable_name.getText().charAt(0))){
+                Toolbox.error_message("The first character on a variable name must be a letter.","Digit found on the first character of the variable name.");
+            }
+            else if(type.equals("scrollpane") && columns.getText().length()==0){
+                Toolbox.error_message("The amount of columns was not defined.","Type the amount of columns desired.");
+            }
+            else if(type.equals("scrollpane") && rows.getText().length()==0){
+                Toolbox.error_message("The amount of rows was not defined.","Type the amount of rows desired.");
+            }
+            else if(type.equals("scrollpane") && !Generate.only_numbers(columns.getText())){
+                Toolbox.error_message("Type only numbers in the columns textfield.","Invalid columns amount.");
+            }
+            else if(type.equals("scrollpane") && !Generate.only_numbers(rows.getText())){
+                Toolbox.error_message("Type only numbers in the rows textfield.","Invalid rows amount.");
+            }
+            else if(type.equals("combobox") && combobox_initial_item.getText().length()==0){
+                Toolbox.error_message("The index of the initial item was not defined.","Type the index of the initial item.");
+            }
+            else if(type.equals("combobox") && combobox_combobox_rows_displayed.getText().length()==0){
+                Toolbox.error_message("The amount of rows displayed at once was not defined.","Type the amount of rows.");
+            }
+            else if(type.equals("combobox") && !Generate.only_numbers(combobox_initial_item.getText())){
+                Toolbox.error_message("Type only numbers.","Invalid initial item index.");
+            }
+            else if(type.equals("combobox") && !Generate.only_numbers(combobox_combobox_rows_displayed.getText())){
+                Toolbox.error_message("Type only numbers.","Invalid rows amount.");
+            }
+            else if(type.equals("bar") && value.getText().length()==0){
+                Toolbox.error_message("The value amount was not defined.","Type the value amount.");
+            }
+            else if(type.equals("bar") && !Generate.only_numbers(value.getText())){
+                Toolbox.error_message("Type only numbers.","Invalid value amount.");
+            }
+            else if(type.equals("bar") && min.getText().length()==0){
+                Toolbox.error_message("The min. amount was not defined.","Type the min.");
+            }
+            else if(type.equals("bar") && !Generate.only_numbers(min.getText())){
+                Toolbox.error_message("Type only numbers.","Invalid min amount.");
+            }
+            else if(type.equals("bar") && max.getText().length()==0){
+                Toolbox.error_message("The max. amount was not defined.","Type the max. amount.");
+            }
+            else if(type.equals("bar") && !Generate.only_numbers(max.getText())){
+                Toolbox.error_message("Type only numbers.","Invalid max amount.");
+            }
+            else{ //if there is no potential error
+                //add
+                if(type.equals("label")){
+                    
+                    JLabel temp = new JLabel();
+                    
+                    temp.setBounds(((JLabel)preview).getBounds());
+                    
+                    if(opaque.isSelected()){temp.setOpaque(true);}
+                    else{temp.setOpaque(false);temp.setBackground(new Color(0,0,0,64));}
 
+                    temp.setBackground(content_background_color.getBackground());
+                    temp.setForeground(content_foreground_color.getBackground());
+                    temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                    ((JLabel)temp).setHorizontalAlignment(JLabel.CENTER);
+                    ((JLabel)temp).setText(text.getText());
+
+                    if(border.isSelected()){temp.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
+                    else{temp.setBorder(null);}
+
+                    //remove 'preview' from the center panel and add the component to the center panel
+                    Interface.center.setVisible(false);
+                    Interface.center.remove(preview);
+                    Center_panel.list_label.add(temp);
+                    Center_panel.label_names.add(variable_name.getText());
+                    Interface.center.add(Center_panel.list_label.getLast());
+                    Interface.center.setVisible(true);
+                
+                    //add to the left panel
+                    Left_panel.implemented_items.add(new Item(temp,"JLABEL",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                    Left_panel.update_rectangles();
+
+                }
+                else if(type.equals("textfield")){
+                    
+                    JTextField temp = new JTextField();
+                    
+                    temp.setBounds(((JTextField)preview).getBounds());
+                    
+                    if(opaque.isSelected()){temp.setOpaque(true);}
+                    else{temp.setOpaque(false);temp.setBackground(new Color(0,0,0,64));}
+
+                    temp.setBackground(content_background_color.getBackground());
+                    temp.setForeground(content_foreground_color.getBackground());
+                    temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                    ((JTextField)temp).setHorizontalAlignment(JLabel.CENTER);
+                    ((JTextField)temp).setText(text.getText());
+
+                    if(editable.isSelected()){((JTextField)temp).setEditable(true);}
+                    else{((JTextField)temp).setEditable(false);}
+
+                    if(border.isSelected()){temp.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
+                    else{temp.setBorder(null);}
+
+                    //remove 'preview' from the center panel and add the component to the center panel
+
+                    Interface.center.setVisible(false);
+
+                    Interface.center.remove(preview);
+                    Center_panel.list_textfield.add(temp);
+                    Center_panel.textfield_names.add(variable_name.getText());
+                    Interface.center.add(Center_panel.list_textfield.getLast());
+
+                    Interface.center.setVisible(true);
+
+                    //add to the left panel
+                    Left_panel.implemented_items.add(new Item(temp,"JTEXTFIELD",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                    Left_panel.update_rectangles();
+
+                }
+                else if(type.equals("passwordfield")){
+                    
+                    JPasswordField temp = new JPasswordField();
+                    
+                    temp.setBounds(((JPasswordField)preview).getBounds());
+                    
+                    temp.setBackground(content_background_color.getBackground());
+                    temp.setForeground(content_foreground_color.getBackground());
+                    temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                    ((JPasswordField)temp).setHorizontalAlignment(JLabel.CENTER);
+
+                    if(opaque.isSelected()){temp.setOpaque(true);}
+                    else{temp.setOpaque(false);temp.setBackground(new Color(0,0,0,64));}
+
+                    if(border.isSelected()){temp.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
+                    else{temp.setBorder(null);}
+
+                    //remove 'preview' from the center panel and add the component to the center panel
+
+                    Interface.center.setVisible(false);
+
+                    Interface.center.remove(preview);
+                    Center_panel.list_passwordfield.add(temp);
+                    Center_panel.passwordfield_names.add(variable_name.getText());
+                    Interface.center.add(Center_panel.list_passwordfield.getLast());
+
+                    Interface.center.setVisible(true);
+
+                    //add to the left panel
+                    Left_panel.implemented_items.add(new Item(temp,"JPASSWORDFIELD",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                    Left_panel.update_rectangles();
+
+                }
+                else if(type.equals("textarea")){
+                    
+                    JTextArea temp = new JTextArea();
+                    
+                    temp.setBounds(((JTextArea)preview).getBounds());
+                    
+                    temp.setBackground(content_background_color.getBackground());
+                    temp.setForeground(content_foreground_color.getBackground());
+                    temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                    ((JTextArea)temp).setText(text.getText());
+
+                    if(editable.isSelected()){((JTextArea)temp).setEditable(true);}
+                    else{((JTextArea)temp).setEditable(false);}
+
+                    if(border.isSelected()){temp.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
+                    else{temp.setBorder(null);}
+
+                    preview.setOpaque(true);
+
+                    //remove 'preview' from the center panel and add the component to the center panel
+
+                    Interface.center.setVisible(false);
+
+                    Interface.center.remove(preview);
+                    Center_panel.list_textarea.add(temp);
+                    Center_panel.textarea_names.add(variable_name.getText());
+                    Interface.center.add(Center_panel.list_textarea.getLast());
+
+                    Interface.center.setVisible(true);
+
+                    //add to the left panel
+                    Left_panel.implemented_items.add(new Item(temp,"JTEXTAREA",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                    Left_panel.update_rectangles();
+
+                }
+                else if(type.equals("scrollpane")){
+                    
+                    JPanel temp = new JPanel();
+                    
+                    JTextArea textarea = new JTextArea();
+                    JScrollPane scrollPane = new JScrollPane(textarea);
+                    
+                    scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+                    temp.setBounds(preview.getBounds());
+
+                    ((JTextArea)textarea).setRows(Integer.parseInt(rows.getText()));
+                    ((JTextArea)textarea).setColumns(Integer.parseInt(columns.getText()));
+                    
+                    textarea.setBackground(content_background_color.getBackground());
+                    textarea.setForeground(content_foreground_color.getBackground());
+                    textarea.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+                
+                    ((JTextArea)textarea).setText(text.getText());
+                    
+                    if(opaque.isSelected()){textarea.setOpaque(true);temp.setBackground(scrollpane_background_color.getBackground());}
+                    else{textarea.setOpaque(false);temp.setBackground(new Color(0,0,0,0));}
+
+                    if(editable.isSelected()){((JTextArea)textarea).setEditable(true);}
+                    else{((JTextArea)textarea).setEditable(false);}
+
+                    if(border.isSelected()){textarea.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));}
+                    else{textarea.setBorder(null);}
+
+                    temp.add(scrollPane);
+
+                    //remove 'preview' from the center panel and add the component to the center panel
+
+                    Interface.center.setVisible(false);
+
+                    Interface.center.remove(preview);
+                    Center_panel.list_scrollpane.add(temp);
+                    Center_panel.scrollpane_names.add(variable_name.getText());
+                    Center_panel.list_scrollpane_textarea.add(textarea);
+                    Interface.center.add(Center_panel.list_scrollpane.getLast());
+
+                    Interface.center.setVisible(true);
+
+                    //add to the left panel
+                    Left_panel.implemented_items.add(new Item(temp,"JSCROLLPANE",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                    Left_panel.update_rectangles();
+
+                }
+                else if(type.equals("button")){
+                    
+                    JButton temp = new JButton();
+                    
+                    temp.setBounds(((JButton)preview).getBounds());
+                    
+                    temp.setBackground(content_background_color.getBackground());
+                    temp.setForeground(content_foreground_color.getBackground());
+                    temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                    ((JButton)temp).setHorizontalAlignment(JLabel.CENTER);
+                    ((JButton)temp).setText(text.getText());
+
+                    //remove 'preview' from the center panel and add the component to the center panel
+
+                    Interface.center.setVisible(false);
+
+                    Interface.center.remove(preview);
+                    Center_panel.list_button.add(temp);
+                    Center_panel.button_names.add(variable_name.getText());
+                    Interface.center.add(Center_panel.list_button.getLast());
+
+                    Interface.center.setVisible(true);
+
+                    //add to the left panel
+                    Left_panel.implemented_items.add(new Item(temp,"JBUTTON",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                    Left_panel.update_rectangles();
+
+                }
+                else if(type.equals("combobox")){
+                    
+                    //add items
+                    int n_of_items = 0;
+                    for(int i=0;i<combobox_items.getText().length();i++){if(combobox_items.getText().charAt(i)==','){n_of_items++;}}
+                    String[] items = new String[n_of_items+1];
+                    String item = "";
+                    int count = 0;
+                    for(int i=0;i<combobox_items.getText().length();i++){
+                        if(combobox_items.getText().charAt(i)!=','){item+=combobox_items.getText().charAt(i);}
+                        else{items[count]=item;item="";count++;}
+                    }
+                    items[count]=item;
+                    
+                    JComboBox<String> temp = new JComboBox<String>(items);
+                    
+                    temp.setBounds(((JComboBox<String>)preview).getBounds());
+                    
+                    temp.setBackground(content_background_color.getBackground());
+                    temp.setForeground(content_foreground_color.getBackground());
+                    temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                    ((JComboBox<String>)temp).setAlignmentX(JComboBox.CENTER_ALIGNMENT);
+                    ((JComboBox<String>)temp).setMaximumRowCount(Integer.parseInt(combobox_combobox_rows_displayed.getText()));
+                    ((JComboBox<String>)temp).setSelectedIndex(Integer.parseInt(combobox_initial_item.getText()));
+
+                    //centralize the items
+                    DefaultListCellRenderer dlcr = new DefaultListCellRenderer();
+                    dlcr.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
+                    ((JComboBox<String>)temp).setRenderer(dlcr);
+
+                    //remove 'preview' from the center panel and add the component to the center panel
+
+                    Interface.center.setVisible(false);
+
+                    Interface.center.remove(preview);
+                    Center_panel.list_combobox.add(temp);
+                    Center_panel.combobox_names.add(variable_name.getText());
+                    Interface.center.add(Center_panel.list_combobox.getLast());
+
+                    Interface.center.setVisible(true);
+
+                    //add to the left panel
+                    Left_panel.implemented_items.add(new Item(temp,"JCOMBOBOX",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                    Left_panel.update_rectangles();
+
+                }
+                else if(type.equals("radiobutton")){
+                    
+                    JRadioButton temp = new JRadioButton();
+                    
+                    temp.setBounds(((JRadioButton)preview).getBounds());
+                    
+                    temp.setBackground(content_background_color.getBackground());
+                    temp.setForeground(content_foreground_color.getBackground());
+                    temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                    ((JRadioButton)temp).setHorizontalAlignment(JRadioButton.CENTER);
+                    ((JRadioButton)temp).setText(text.getText());
+
+                    //remove 'preview' from the center panel and add the component to the center panel
+
+                    Interface.center.setVisible(false);
+
+                    Interface.center.remove(preview);
+                    Center_panel.list_radiobutton.add(temp);
+                    Center_panel.radiobutton_names.add(variable_name.getText());
+                    Center_panel.buttongroup_names.add(button_group.getText());
+                    Interface.center.add(Center_panel.list_radiobutton.getLast());
+
+                    Interface.center.setVisible(true);
+
+                    //add to the left panel
+                    Left_panel.implemented_items.add(new Item(temp,"JRADIOBUTTON",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                    Left_panel.update_rectangles();
+
+                }
+                else if(type.equals("table")){
+                    //type: JTABLE
+                }
+                else if(type.equals("image")){
+                    
+                    JLabel temp = new JLabel();
+                    
+                    temp.setBounds(((JLabel)preview).getBounds());
+
+                    //temporary resize for the center panel
+                    try {
+                        BufferedImage originalImage = ImageIO.read(new File(link.getText()));
+
+                        BufferedImage resizedImage = new BufferedImage(originalImage.getWidth()/2,originalImage.getHeight()/2,BufferedImage.TYPE_INT_RGB);
+                        Graphics2D graphics2d = resizedImage.createGraphics();
+                
+                        graphics2d.drawImage(originalImage,0,0,originalImage.getWidth()/2,originalImage.getHeight()/2,null);
+                        graphics2d.dispose();
+                        ((JLabel)temp).setIcon(new ImageIcon((Image)resizedImage));
+                    } catch (Exception exception_resized) {
+                        exception_resized.printStackTrace();
+                    }
+                    //((JLabel)temp).setIcon(new ImageIcon(link.getText()));       
+
+                    //remove 'preview' from the center panel and add the component to the center panel
+
+                    Interface.center.setVisible(false);
+                    Interface.center.remove(preview);
+                    Center_panel.list_image.add(temp);
+                    Center_panel.image_names.add(variable_name.getText());
+                    Center_panel.sources_names.add(link.getText());
+                    Interface.center.add(Center_panel.list_image.getLast());
+                    Interface.center.setVisible(true);
+
+                    //add to the left panel
+                    Left_panel.implemented_items.add(new Item(temp,"IMAGE",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                    Left_panel.update_rectangles();
+
+                }
+                else if(type.equals("bar")){
+                    
+                    JProgressBar temp = new JProgressBar();
+                    
+                    temp.setBounds(((JProgressBar)preview).getBounds());
+                    
+                    temp.setBackground(content_background_color.getBackground());
+                    temp.setForeground(content_foreground_color.getBackground());
+                    
+                    ((JProgressBar)temp).setMinimum(Integer.parseInt(min.getText()));
+                    ((JProgressBar)temp).setMaximum(Integer.parseInt(max.getText()));
+                    ((JProgressBar)temp).setValue(Integer.parseInt(value.getText()));
+
+                    //remove 'preview' from the center panel and add the component to the center panel
+
+                    Interface.center.setVisible(false);
+
+                    Interface.center.remove(preview);
+                    Center_panel.list_bar.add(temp);
+                    Center_panel.bar_names.add(variable_name.getText());
+                    Interface.center.add(Center_panel.list_bar.getLast());
+
+                    Interface.center.setVisible(true);
+
+                    //add to the left panel
+                    Left_panel.implemented_items.add(new Item(temp,"JPROGRESSBAR",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                    Left_panel.update_rectangles();
+
+                }
+                else if(type.equals("checkbox")){
+                    
+                    JCheckBox temp = new JCheckBox();
+                    
+                    temp.setBounds(((JCheckBox)preview).getBounds());
+                    
+                    temp.setBackground(content_background_color.getBackground());
+                    temp.setForeground(content_foreground_color.getBackground());
+                    temp.setFont(new Font(font_family.getSelectedItem().toString(),Font.PLAIN,font_size.getSelectedIndex()+1));
+
+                    ((JCheckBox)temp).setHorizontalAlignment(JCheckBox.CENTER);
+                    ((JCheckBox)temp).setText(text.getText());
+
+                    if(opaque.isSelected()){temp.setOpaque(true);}
+                    else{temp.setOpaque(false);temp.setBackground(new Color(0,0,0,64));}
+
+                    if(checked.isSelected()){((JCheckBox)temp).setSelected(true);}
+                    else{((JCheckBox)temp).setSelected(true);}
+
+                    //remove 'preview' from the center panel and add the component to the center panel
+
+                    Interface.center.setVisible(false);
+
+                    Interface.center.remove(preview);
+                    Center_panel.list_checkbox.add(temp);
+                    Center_panel.checkbox_names.add(variable_name.getText());
+                    Interface.center.add(Center_panel.list_checkbox.getLast());
+
+                    Interface.center.setVisible(true);
+
+                    //add to the left panel
+                    Left_panel.implemented_items.add(new Item(temp,"JCHECKBOX",variable_name.getText(),(String)X_pos.getSelectedItem(),(String)Y_pos.getSelectedItem(),(String)width.getSelectedItem(),(String)height.getSelectedItem()));
+                    Left_panel.update_rectangles();
+
+                }
+                
+                //reset the 'type' and set invisible the details panel
+                type="null";
+                add_item.setVisible(false);
+                preview_item.setVisible(false);
+                details.removeAll();
+                details.setVisible(false);
+
+                //set the left panel firt index as 0
+                Left_panel.first_index=0;
+            }
         }
 
     }
@@ -2048,6 +2109,7 @@ public class Right_panel extends JFrame implements ActionListener{
         @Override
         public void itemStateChanged(ItemEvent event){
             if(event.getStateChange() == ItemEvent.SELECTED){
+                //every time a any of the combobox witch itemlistener is 'il' change, update the center panel
                 value_width = width_combobox.getSelectedIndex();
                 value_height = height_combobox.getSelectedIndex();
                 value_x = x_combobox.getSelectedIndex();
