@@ -1712,7 +1712,7 @@ public class Right_panel extends JFrame implements ActionListener{
                     Interface.center.remove(preview);
                     Center_panel.list_label.add(temp);
                     Center_panel.label_names.add(variable_name.getText());
-                    Interface.center.add(Center_panel.list_label.getLast());
+                    Interface.center.add(Center_panel.list_label.get(Center_panel.list_label.size()-1));
                     Interface.center.setVisible(true);
                 
                     //add to the left panel
@@ -1749,7 +1749,7 @@ public class Right_panel extends JFrame implements ActionListener{
                     Interface.center.remove(preview);
                     Center_panel.list_textfield.add(temp);
                     Center_panel.textfield_names.add(variable_name.getText());
-                    Interface.center.add(Center_panel.list_textfield.getLast());
+                    Interface.center.add(Center_panel.list_textfield.get(Center_panel.list_textfield.size()-1));
 
                     Interface.center.setVisible(true);
 
@@ -1783,7 +1783,7 @@ public class Right_panel extends JFrame implements ActionListener{
                     Interface.center.remove(preview);
                     Center_panel.list_passwordfield.add(temp);
                     Center_panel.passwordfield_names.add(variable_name.getText());
-                    Interface.center.add(Center_panel.list_passwordfield.getLast());
+                    Interface.center.add(Center_panel.list_passwordfield.get(Center_panel.list_passwordfield.size()-1));
 
                     Interface.center.setVisible(true);
 
@@ -1819,7 +1819,7 @@ public class Right_panel extends JFrame implements ActionListener{
                     Interface.center.remove(preview);
                     Center_panel.list_textarea.add(temp);
                     Center_panel.textarea_names.add(variable_name.getText());
-                    Interface.center.add(Center_panel.list_textarea.getLast());
+                    Interface.center.add(Center_panel.list_textarea.get(Center_panel.list_textarea.size()-1));
 
                     Interface.center.setVisible(true);
 
@@ -1867,7 +1867,7 @@ public class Right_panel extends JFrame implements ActionListener{
                     Center_panel.list_scrollpane.add(temp);
                     Center_panel.scrollpane_names.add(variable_name.getText());
                     Center_panel.list_scrollpane_textarea.add(textarea);
-                    Interface.center.add(Center_panel.list_scrollpane.getLast());
+                    Interface.center.add(Center_panel.list_scrollpane.get(Center_panel.list_scrollpane.size()-1));
 
                     Interface.center.setVisible(true);
 
@@ -1896,7 +1896,7 @@ public class Right_panel extends JFrame implements ActionListener{
                     Interface.center.remove(preview);
                     Center_panel.list_button.add(temp);
                     Center_panel.button_names.add(variable_name.getText());
-                    Interface.center.add(Center_panel.list_button.getLast());
+                    Interface.center.add(Center_panel.list_button.get(Center_panel.list_button.size()-1));
 
                     Interface.center.setVisible(true);
 
@@ -1943,7 +1943,7 @@ public class Right_panel extends JFrame implements ActionListener{
                     Interface.center.remove(preview);
                     Center_panel.list_combobox.add(temp);
                     Center_panel.combobox_names.add(variable_name.getText());
-                    Interface.center.add(Center_panel.list_combobox.getLast());
+                    Interface.center.add(Center_panel.list_combobox.get(Center_panel.list_combobox.size()-1));
 
                     Interface.center.setVisible(true);
 
@@ -1973,7 +1973,7 @@ public class Right_panel extends JFrame implements ActionListener{
                     Center_panel.list_radiobutton.add(temp);
                     Center_panel.radiobutton_names.add(variable_name.getText());
                     Center_panel.buttongroup_names.add(button_group.getText());
-                    Interface.center.add(Center_panel.list_radiobutton.getLast());
+                    Interface.center.add(Center_panel.list_radiobutton.get(Center_panel.list_radiobutton.size()-1));
 
                     Interface.center.setVisible(true);
 
@@ -2013,7 +2013,7 @@ public class Right_panel extends JFrame implements ActionListener{
                     Center_panel.list_image.add(temp);
                     Center_panel.image_names.add(variable_name.getText());
                     Center_panel.sources_names.add(link.getText());
-                    Interface.center.add(Center_panel.list_image.getLast());
+                    Interface.center.add(Center_panel.list_image.get(Center_panel.list_image.size()-1));
                     Interface.center.setVisible(true);
 
                     //add to the left panel
@@ -2041,7 +2041,7 @@ public class Right_panel extends JFrame implements ActionListener{
                     Interface.center.remove(preview);
                     Center_panel.list_bar.add(temp);
                     Center_panel.bar_names.add(variable_name.getText());
-                    Interface.center.add(Center_panel.list_bar.getLast());
+                    Interface.center.add(Center_panel.list_bar.get(Center_panel.list_bar.size()-1));
 
                     Interface.center.setVisible(true);
 
@@ -2076,7 +2076,7 @@ public class Right_panel extends JFrame implements ActionListener{
                     Interface.center.remove(preview);
                     Center_panel.list_checkbox.add(temp);
                     Center_panel.checkbox_names.add(variable_name.getText());
-                    Interface.center.add(Center_panel.list_checkbox.getLast());
+                    Interface.center.add(Center_panel.list_checkbox.get(Center_panel.list_checkbox.size()-1));
 
                     Interface.center.setVisible(true);
 
