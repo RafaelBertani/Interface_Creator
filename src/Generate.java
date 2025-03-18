@@ -319,7 +319,7 @@ public class Generate{
             if(button.getBorder()!=null){main_code_2.add("\t\t"+Center_panel.button_names.get(i)+".setBorder(BorderFactory.createLineBorder(Color.BLACK,1));");}
             else{main_code_2.add("\t\t"+Center_panel.button_names.get(i)+".setBorder(null);");}
 
-            main_code_2.add("\t\t\\\\"+Center_panel.button_names.get(i)+".addActionListener(this);");
+            main_code_2.add("\t\t\/\/"+Center_panel.button_names.get(i)+".addActionListener(this);");
 
             main_code_2.add("\t\t"+Right_panel.panel_name_textfield.getText()+".add("+Center_panel.button_names.get(i)+");");
 
